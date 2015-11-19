@@ -195,6 +195,8 @@
 			<style type="text/css">
 				#section-3 {
 					margin-top: 0;
+					margin-bottom: 0;
+					padding-bottom: 0;
 				}
 			</style>
 			<section class="full-section" id="section-3">
