@@ -5,96 +5,53 @@
                     <ul>
 						<li data-transition="slotslide-horizontal" data-slotamount="50">
                             
-                            <img src="/basic/web/themes/images/index/revolution-slider/bg-slide-3.jpg" alt="">
-							
-							<div class="tp-caption title-big sft" data-x="center" data-y="85" data-speed="700" data-start="2700" data-easing="easeOutBack">
-                            	Discover Dakota.
+                            <img src="/basic/web/themes/images/Slide1.jpg" alt="">	
+
+                            <div style="color:#fe5e3e;" class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="700" data-easing="easeOutBack">
+                            	Позвольте своему бизнесу <br>расти вместе с нами.  
 							</div>
 							
-							<div class="tp-caption fade" data-x="center" data-hoffset="50" data-y="275" data-speed="700" data-start="1500" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-3-image-1.png" alt="">
+							<div class="tp-caption text sfl" data-x="30" data-y="315" data-speed="700" data-start="1000" data-easing="easeOutBack">
+                            	Мы поможем вам сделать <br>качественную рекламу в интернете.
 							</div>
 							
-							<div class="tp-caption customin" data-customin="scaleX:0;scaleY:0;" data-x="center" data-y="155" data-speed="1200" data-start="2000" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-3-image-2.png" alt="">
-							</div>							
+							<div class="tp-caption sfb" data-x="30" data-y="430" data-speed="700" data-start="1500" data-easing="easeOutBack">
+                            	<a class="btn btn-default" href="#">Заказать сейчас</a>
+							</div>					
 							
 						</li>
                         <li data-transition="slotslide-horizontal" data-slotamount="50">
                             
-                            <img src="/basic/web/themes/images/index/revolution-slider/bg-slide-1.jpg" alt="">
+                            <img src="/basic/web/themes/images/Slide2.jpg" alt="">
 							
-							<div class="tp-caption sfb" data-x="355" data-y="325" data-speed="700" data-start="1500" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-1-image-1.png" alt="">
+							<div style="color:#282e3a;" class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="700" data-easing="easeOutBack">
+                            	Любой товар нуждается<br>в рекламе.
 							</div>
 							
-							<div class="tp-caption sfb" data-x="540" data-y="305" data-speed="700" data-start="1700" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-1-image-2.png" alt="">
+							<div style="color:#fe5e3e;" class="tp-caption text sfl" data-x="30" data-y="315" data-speed="700" data-start="1000" data-easing="easeOutBack">
+                            	А мы знаем как продвигать <br>ваши товары и <br>услуги в интернете.
 							</div>
 							
-							<div class="tp-caption sfb" data-x="720" data-y="285" data-speed="700" data-start="1900" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-1-image-3.png" alt="">
+							<div style="color:#fe5e3e;" class="tp-caption sfb" data-x="30" data-y="430" data-speed="700" data-start="1500" data-easing="easeOutBack">
+                            	<a class="btn btn-default" href="#">Заказать сейчас</a>
 							</div>
-							
-							<div class="tp-caption sfb" data-x="595" data-y="170" data-speed="700" data-start="2300" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-1-image-4.png" alt="">
-							</div>
-							
-							<div class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="2700" data-easing="easeOutBack">
-                            	Let your business grow <br>
-								with us. Trust our templates.  
-							</div>
-							
-							<div class="tp-caption text sfl" data-x="30" data-y="315" data-speed="700" data-start="3000" data-easing="easeOutBack">
-                            	Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br>
-								accusantium doloremque laudantium, totam rem aperiam, Sed ut <br>
-								perspiciatis unde omnis iste natus.
-							</div>
-							
-							<div class="tp-caption sfb" data-x="30" data-y="430" data-speed="700" data-start="3500" data-easing="easeOutBack">
-                            	<a class="btn btn-default" href="#">Learn more</a>
-							</div>
-							
-							<div class="pattern"></div>
 							
 						</li>
 						<li data-transition="slotslide-horizontal" data-slotamount="50">
                             
-                            <img src="/basic/web/themes/images/index/revolution-slider/bg-slide-2.jpg" alt="">
-							
-							<div class="tp-caption sfb" data-x="center" data-y="bottom" data-speed="700" data-start="1500" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-2-image-1.png" alt="">
+                            <img src="/basic/web/themes/images/Slide3.jpg" alt="">
+
+                            <div class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="700" data-easing="easeOutBack">
+                            	Делать деньги без <br>рекламы может только монетный двор.
 							</div>
 							
-							<div class="tp-caption customin" data-customin="scaleX:1.2;scaleY:1.2;" data-x="0" data-y="230" data-speed="700" data-start="1800" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-2-image-2.png" alt="">
+							<div class="tp-caption text sfl" data-x="30" data-y="315" data-speed="700" data-start="1000" data-easing="easeOutBack">
+                            	Вести бизнес без рекламы<br>- все равно, что подмигивать <br>девушке в полной темноте.
 							</div>
 							
-							<div class="tp-caption customin" data-customin="scaleX:1.2;scaleY:1.2;" data-x="950" data-y="485" data-speed="700" data-start="2000" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-2-image-3.png" alt="">
+							<div class="tp-caption sfb" data-x="30" data-y="430" data-speed="700" data-start="1500" data-easing="easeOutBack">
+                            	<a class="btn btn-default" href="#">Заказать сейчас</a>
 							</div>
-							
-							<div class="tp-caption fade" data-x="200" data-y="220" data-speed="700" data-start="2300" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-2-image-4.png" alt="">
-							</div>
-							
-							<div class="tp-caption sfb" data-x="780" data-y="500" data-speed="700" data-start="2500" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-2-image-5.png" alt="">
-							</div>
-							
-							<div class="tp-caption customin" data-customin="scaleX:1.2;scaleY:1.2;" data-x="900" data-y="310" data-speed="700" data-start="2800" data-easing="easeOutBack">
-                            	<img src="/basic/web/themes/images/index/revolution-slider/slide-2-image-6.png" alt="">
-							</div>
-							
-							<div class="tp-caption title sft" data-x="center" data-y="100" data-speed="700" data-start="3200" data-easing="easeOutBack">
-                            	Let your business grow with us.
-							</div>
-							
-							<div class="tp-caption customin" data-customin="scaleX:0;scaleY:0;" data-x="center" data-y="170" data-speed="700" data-start="3500" data-easing="easeOutBack">
-                            	<a class="btn btn-default" href="#">Learn more</a>
-							</div>
-							
-							<div class="pattern"></div>
 							
 						</li>
 					</ul>
@@ -106,8 +63,8 @@
 						
 						<div class="headline">
 							
-							<h3>How does our professional team work?</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+							<h3>Как это работает</h3>
+							<p>Если у вас есть продукт или услуга, то мы поможем людям в интернете узнать о них</p>
 							
 						</div><!-- headline -->
 						
@@ -126,8 +83,8 @@
 								
 								<div class="step-details">
 									
-									<h6>Modern design</h6>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque lauda.</p>
+									<h6>Шаг 1</h6>
+									<p>Зарегистрируйтесь на сайте. Добавьте свои проекты - ваши продукты и услуги</p>
 								
 								</div><!-- step-details -->
 								
@@ -139,8 +96,8 @@
 								
 								<div class="step-details">
 									
-									<h6>Video background</h6>
-									<p>Cras vitae quam a eros pharetra viverra. Mauris iaculis lacus sit amet bibendum cursus amet.</p>
+									<h6>Шаг 2</h6>
+									<p>Создайте рекламную кампанию с краткой информацией и заведите под нее бюджет</p>
 								
 								</div><!-- step-details -->
 								
@@ -152,8 +109,8 @@
 								
 								<div class="step-details">
 									
-									<h6>Brain storm</h6>
-									<p>Aliquam egestas sit amet turpis egestas molestie. Nam dui nulla, rhoncus nec ornare at est.</p>
+									<h6>Шаг 3</h6>
+									<p>Смотрите отчеты переходов на ваш сайт и получайте заинтересованных клиентов</p>
 								
 								</div><!-- step-details -->
 								
@@ -175,16 +132,15 @@
 						<div class="row">
 							<div class="col-sm-6">
 								
-								<h3><span class="text-default">No stress.</span> Only what you need.</h3>
+								<h3><span class="text-default">Никакого стресса.</span>Все заботы мы берем на себя</h3>
 								
-								<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut <br class="hidden-sm hidden-xs"> odit aut fugit, sed quia 
-								consequuntur.</p>
+								<p>Мы ценим время наших клиентов и нацелены на результат.<br class="hidden-sm hidden-xs">Наша цель это ваш успех!</p>
 								
 							</div><!-- col -->
 							<div class="col-sm-6 text-right">
 								
 								<br>
-								<a class="btn btn-default" href="#">Buy now on themeforest</a>
+								<a class="btn btn-default" href="#">ЗАПУСТИТЬ РЕКЛАМНУЮ КАМПАНИЮ</a>
 								
 							</div><!-- col -->
 						</div><!-- row -->
@@ -219,8 +175,8 @@
 								
 								<div class="headline">
 									
-									<h3>Services we provide</h3>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+									<h3>Рекламные инструменты</h3>
+									<p>Многолетний опыт в сфере интернет-рекламы позволяет нам подбирать и эффективно использовать основные рекламные инструменты</p>
 									
 								</div><!-- headline -->
 								
@@ -238,7 +194,7 @@
 									
 									<div class="service-box-content">
 										
-										<h6><a href="single-service.html">Modern Design</a></h6>
+										<h6><a href="single-service.html">ТЕКСТОВЫЙ КОНТЕКСТ В ПОИСКЕ</a></h6>
 										
 										<p>Duis aute irure dolor in reprehenderit in dolor velit esse cillum dolore eu fugiat nulla lorem ipsum dolor sit 
 										amet omis.</p>
@@ -256,7 +212,7 @@
 									
 									<div class="service-box-content">
 										
-										<h6><a href="single-service.html">Colorfull</a></h6>
+										<h6><a href="single-service.html">МЕДИЙНЫЙ КОНТЕКСТ В ПАРТНЕРСКИХ СЕТЯХ</a></h6>
 										
 										<p>Proin porta vulputate ante et dignissim. Ut porta feugiat nibh, sed omis unde justo. In quis diam vel erat 
 										vestibulum amet.</p>
@@ -274,7 +230,7 @@
 									
 									<div class="service-box-content">
 										
-										<h6><a href="single-service.html">Responsive</a></h6>
+										<h6><a href="single-service.html">ТЕКСТОВЫЙ КОНТЕКСТ В ПАРТНЕРСКИХ СЕТЯХ</a></h6>
 										
 										<p>Donec feugiat, neque at lobortis commodo, lectus quam congue felis, non faucibus leo ante in velit egestas nunc 
 										ligula.</p>
@@ -297,7 +253,7 @@
 									
 									<div class="service-box-content">
 										
-										<h6><a href="single-service.html">Easy to customize</a></h6>
+										<h6><a href="single-service.html">НОВОСТНЫЕ ИНФОРМЕРЫ</a></h6>
 										
 										<p>Donec feugiat elit eget vulputate iaculis. Integer aliquet nulla dui, at lacinia magna semper at. Curabitur efficitur justo.</p>
 										
@@ -314,7 +270,7 @@
 									
 									<div class="service-box-content">
 										
-										<h6><a href="single-service.html">Full documentation</a></h6>
+										<h6><a href="single-service.html">КОНТЕКСТ В СОЦИАЛЬНЫХ СЕТЯХ</a></h6>
 										
 										<p>Quisque a erat vel erat porttitor semper elit. Phasellus vestibulum interdum turpis, nec molestie quam vulputate.</p>
 										
@@ -331,7 +287,7 @@
 									
 									<div class="service-box-content">
 										
-										<h6><a href="single-service.html">Light &amp; fast</a></h6>
+										<h6><a href="single-service.html">ОБЪЯВЛЕНИЯ НА ДОСКАХ ОБЪЯВЛЕНИЙ</a></h6>
 										
 										<p>Fusce quis purus eget urna accumsan tincidunt at vel ex. Nulla ultricies arcu sit amet turpis pretium, id 
 										dignissim dui.</p>
@@ -339,74 +295,6 @@
 									</div><!-- service-box-content -->
 									
 								</div><!-- service-box -->
-								
-							</div><!-- col -->
-						</div><!-- row -->
-					</div><!-- container -->
-					
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-4">
-								
-								<div class="service-box style-1 green">
-										
-									<i class="mt-icon-levels"></i>
-									
-									<div class="service-box-content">
-										
-										<h6><a href="single-service.html">Cool parallax effect</a></h6>
-										
-										<p>Class aptent taciti amet sociosqu ad litora sed torquent per conubia nostra, per inceptos unde himenaeos in hendrerit.</p>
-										
-									</div><!-- service-box-content -->
-									
-								</div><!-- service-box -->
-								
-							</div><!-- col -->
-							<div class="col-sm-4">
-								
-								<div class="service-box style-1 default">
-										
-									<i class="mt-icon-stars"></i>
-									
-									<div class="service-box-content">
-										
-										<h6><a href="single-service.html">Well organized files</a></h6>
-										
-										<p>Donec tempus lobortis nibh. Mauris ac massa in sem ultrices suscipit sed. Maecenas pretium non justo at fermentum.</p>
-										
-									</div><!-- service-box-content -->
-									
-								</div><!-- service-box -->
-								
-							</div><!-- col -->
-							<div class="col-sm-4">
-								
-								<div class="service-box style-1 blue">
-										
-									<i class="mt-icon-linegraphic"></i>
-									
-									<div class="service-box-content">
-										
-										<h6><a href="single-service.html">Clean design</a></h6>
-										
-										<p>Quisque maximus odio purus, eget varius erat tempor ac. Aenean bibendum venenatis vestibulum vivamus.</p>
-										
-									</div><!-- service-box-content -->
-									
-								</div><!-- service-box -->
-								
-							</div><!-- col -->
-						</div><!-- row -->
-					</div><!-- container -->
-					
-					<br>
-					
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-12 text-center">
-								
-								<a class="btn btn-default" href="services.html">View all services</a>
 								
 							</div><!-- col -->
 						</div><!-- row -->
