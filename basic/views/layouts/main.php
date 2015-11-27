@@ -18,6 +18,7 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="shortcut icon" href="/basic/web/favicon.ico" type="image/x-icon">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -53,7 +54,8 @@ AppAsset::register($this);
 										<a href="#">ВХОД В КАБИНЕТ</a>
 									</li>
 									<li>
-										<a href="#">РЕГИСТРАЦИЯ</a>
+										<? $url = Url::toRoute(['site/registration']);?>
+										<a href="<?=$url;?>">РЕГИСТРАЦИЯ</a>
 									</li>
 								</ul>
 							</div><!-- widget-contact-registration -->
