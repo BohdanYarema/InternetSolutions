@@ -7,12 +7,11 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
-//use yii\db\Query;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntryForm;
 use app\models\Registration;
-use app\models\Users;
+use app\models\User;
 
 
 class SiteController extends Controller
@@ -63,11 +62,8 @@ class SiteController extends Controller
         $model = new Registration();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $name = $model->name;
-            $email = $model->email;
-            $company = $model->company;
-
-            /*password*/
+                
+             /*password*/
             $password = substr(md5($email),0,8);
 
             /*email for link*/
@@ -80,54 +76,27 @@ class SiteController extends Controller
             //$link = 'http://internetsolutions/basic/web/index.php?r=site%2Factivate&code='.md5($name.time());
             $link = Yii::$app->urlManager->createAbsoluteUrl(['site/activate','code'=> $email_link,'link'=>$code]);
 
-            /*registrate uers*/
-            $registration = Users::registrations($name,$email,$company,$link,$password);
-            
-            /*sending email*/
-            $send = Users::send_email($email,$link);
-            
-            if ($send) {
+            if ($user = $model->registrations($link,$password)) {
+                /*sending email*/
+                $send = User::send_email($email,$link);
                 return $this->redirect('index.php?r=site/confirmate');
             }
-            
         } else {
             // либо страница отображается первый раз, либо есть ошибка в данных
             return $this->render('registration', ['model' => $model]);
         }
     }
 
-     public function actionActivate($code,$link)
-    {
-        $check = ''; // проверка на вхождение 
-        $email_check = ''; // нужный имейл
-        $users = (new \yii\db\Query()) // выборка из базы 
-            ->from('Users')
-            ->all();
-
-        $calc = count($users); // количество записей
-
-        /*ищем имейл из ссылки*/
-        for ($i=0; $i < $calc; $i++) { 
-            $users_hash = md5($users[$i]['u_email']); // хеш мыла
-            if ($users_hash === $code) {
-                 $check = 1;
-                 $email_check = $users[$i]['u_email'];
-            }
-        }
-
-
-
+    public function actionActivate($code,$link)
+    { 
         return $this->render('activate', [
-                'code' => $code,
-                'link' => $link,
-                'email_check' => $email_check,
-            ]);
+            'code' => $code,
+            'link' => $link,
+        ]);
     }
 
     public function actionConfirmate()
     {
-
-
         return $this->render('confirmate');
     }
 
@@ -138,7 +107,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionContact()
+    /*public function actionContact()
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
@@ -149,25 +118,27 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model,
         ]);
-    }
+    }*/
 
-    public function actionAbout()
+    /*public function actionAbout()
     {
         return $this->render('about');
-    }
+    }*/
 
-    /*public function actionLogin()
+    public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
+        
         return $this->render('login', [
             'model' => $model,
         ]);
-    }*/
+    }
 }

@@ -28,9 +28,6 @@
                             </p>
                             <p><?=$code;?></p>
                             <p><?=$link;?></p>
-                            <p><?
-                                var_dump($email_check);
-                            ?></p>
 						</div><!-- headline -->
 					</div><!-- col -->
 				</div><!-- row -->

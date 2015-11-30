@@ -2,102 +2,127 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+use Yii;
+use \yii\db\ActiveRecord;
+use \yii\web\IdentityInterface;
+
+/**
+ * This is the model class for table "User".
+ *
+ * @property integer $id
+ * @property string $username
+ * @property string $password
+ * @property string $auth_key
+ * @property string $u_snp
+ * @property string $u_company
+ * @property string $u_status
+ * @property string $u_activation_link
+ * @property integer $u_time_link
+ * @property string $date_post
+ */
+
+
+class User extends ActiveRecord implements IdentityInterface
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
-
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentity($id)
+    /*Таблица*/
+    public static function tableName()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return 'User';
     }
 
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
+    /*Правила*/
+    public function rules()
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return [
+            [['username', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post'], 'required'],
+            [['username', 'password', 'auth_key', 'u_snp', 'u_company', 'u_activation_link'], 'string'],
+            [['u_time_link','date_post','u_status'], 'integer']
+        ];
     }
 
-    /**
-     * Finds user by username
-     *
-     * @param  string      $username
-     * @return static|null
-     */
+    /*Название атрибутов*/
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Username',
+            'password' => 'Password',
+            'auth_key' => 'Auth Key',
+            'u_snp' => 'U Snp',
+            'u_company' => 'U Company',
+            'u_status' => 'U Status',
+            'u_activation_link' => 'U Activation Link',
+            'u_time_link' => 'U Time Link',
+            'date_post' => 'Date Post',
+        ];
+    }
+
+    /*ключ авторизации*/
+    /*хелперы*/
+
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+
+    /*поисе по имени*/
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return static::findOne(['username' => $username]);
     }
 
-    /**
-     * @inheritdoc
-     */
+    /*проверка пароля*/
+    public function validatePassword($password)
+    {
+        return $password === $this->password;
+    }
+
+    /* аутентификация */
+
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->auth_key === $authKey;
     }
 
-    /**
-     * Validates password
-     *
-     * @param  string  $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
+    /*sending message to main*/
+
+    public static function send_email($email,$link)
     {
-        return $this->password === $password;
+        $sendmail = Yii::$app->mailer->compose()
+            ->setFrom('test@test.com')
+            ->setTo($email)
+            ->setSubject('Подтверждение регистрации')
+            ->setTextBody('')
+            ->setHtmlBody('<b>Здравствуйте!
+                Для активации вашего аккаунта на сайте <a href="http://b2b.insol.in.ua/basic/web/index.php?r=site%2Findex">insol.in.ua</a> перейдите, пожалуйста, по ссылке 
+                <br><a href="'.$link.'">ссылка</a><br>
+                Данная ссылка действует 48 часов.<br>
+                Если вы получили это письмо случайно и не проходили регистрацию на сайте <a href="http://b2b.insol.in.ua/basic/web/index.php?r=site%2Findex">insol.in.ua</a>, то проигнорируйте его.
+                <br><br>
+                С уважением,
+                Команда Internet Solutions</b>')
+            ->send();
+
+        return $sendmail;
     }
 }

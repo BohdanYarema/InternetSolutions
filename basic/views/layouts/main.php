@@ -51,7 +51,12 @@ AppAsset::register($this);
 							<div class="widget widget-contact">
 								<ul>
 									<li>    
-										<a href="#">ВХОД В КАБИНЕТ</a>
+										<? $url = Url::toRoute(['site/login']);?>
+										<a href="<?=$url;?>" data-method="post">ВХОД В КАБИНЕТ</a>
+									</li>
+									<li>    
+										<? $url = Url::toRoute(['site/logout']);?>
+										<a href="<?=$url;?>" data-method="post">ВЫХОД (<? echo Yii::$app->user->identity->username;?>)</a>
 									</li>
 									<li>
 										<? $url = Url::toRoute(['site/registration']);?>
