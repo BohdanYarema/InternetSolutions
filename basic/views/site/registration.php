@@ -47,7 +47,7 @@
 							</div>
 						    <div class="form-group">
 								<div class="col-sm-12">
-									<?= $form->field($model, 'email')->label(false)->textInput(array('placeholder' => 'E-mail')); ?>
+									<?= $form->field($model, 'username')->label(false)->textInput(array('placeholder' => 'E-mail')); ?>
 								</div>
 							</div>
 						    <div class="form-group">

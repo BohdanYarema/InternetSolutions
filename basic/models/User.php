@@ -34,9 +34,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post'], 'required'],
+            [['username', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post','update_post'], 'required'],
             [['username', 'password', 'auth_key', 'u_snp', 'u_company', 'u_activation_link'], 'string'],
-            [['u_time_link','date_post','u_status'], 'integer']
+            [['u_time_link','date_post','u_status','update_post'], 'integer']
         ];
     }
 
@@ -54,6 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
             'u_activation_link' => 'U Activation Link',
             'u_time_link' => 'U Time Link',
             'date_post' => 'Date Post',
+            'update_post' => 'update_post',
         ];
     }
 
@@ -69,6 +70,35 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
+    }
+
+    /*поисе по имени([хеш])*/
+    public static function findByUsername_hash($u_activation_link)
+    {
+        return static::findOne(['u_activation_link' => $u_activation_link]);
+    }
+
+    /*проверка времени*/
+    public static function findByUsername_check_time($time,$u_time_link)
+    {
+        $two_days = 172800;
+        $result = $time - $u_time_link;
+
+        if ($result < $two_days) {
+           return true; 
+        } elseif ($result >= $two_days) {
+           return false; 
+        }
+    }
+
+    /*добавление пароля*/
+
+    public static function add_password($password,$username)
+    {
+        $data = time();
+        $add = Yii::$app->db->createCommand()->update('User', ['password' => $password,'u_status' => 1], 'username = "'.$username.'"')->execute();
+    
+        return $add;
     }
 
     /*проверка пароля*/
@@ -104,19 +134,38 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-    /*sending message to main*/
+    /*sending message to mail*/
 
     public static function send_email($email,$link)
     {
         $sendmail = Yii::$app->mailer->compose()
-            ->setFrom('test@test.com')
+            ->setFrom('info@insol.in.ua')
             ->setTo($email)
             ->setSubject('Подтверждение регистрации')
-            ->setTextBody('')
             ->setHtmlBody('<b>Здравствуйте!
                 Для активации вашего аккаунта на сайте <a href="http://b2b.insol.in.ua/basic/web/index.php?r=site%2Findex">insol.in.ua</a> перейдите, пожалуйста, по ссылке 
                 <br><a href="'.$link.'">ссылка</a><br>
                 Данная ссылка действует 48 часов.<br>
+                Если вы получили это письмо случайно и не проходили регистрацию на сайте <a href="http://b2b.insol.in.ua/basic/web/index.php?r=site%2Findex">insol.in.ua</a>, то проигнорируйте его.
+                <br><br>
+                С уважением,
+                Команда Internet Solutions</b>')
+            ->send();
+
+        return $sendmail;
+    }
+
+    /*sending password to main*/
+
+    public static function send_password($password,$email)
+    {
+        $sendmail = Yii::$app->mailer->compose()
+            ->setFrom('info@insol.in.ua')
+            ->setTo($email)
+            ->setSubject('Подтверждение регистрации')
+            ->setHtmlBody('<b>Здравствуйте!
+                Для входа в личный кабинет воспользуйтесь ссылкой - <a href="http://b2b.insol.in.ua/basic/web/index.php?r=site%2Flogin">insol.in.ua</a>
+                <br>вот ваш пароль для доступа к сайту - '.$password.'<br>
                 Если вы получили это письмо случайно и не проходили регистрацию на сайте <a href="http://b2b.insol.in.ua/basic/web/index.php?r=site%2Findex">insol.in.ua</a>, то проигнорируйте его.
                 <br><br>
                 С уважением,

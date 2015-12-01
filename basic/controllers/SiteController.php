@@ -63,22 +63,18 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
                 
-             /*password*/
-            $password = substr(md5($email),0,8);
+            /*password*/
+            /*$password = substr(md5($username),0,8);*/
 
             /*email for link*/
-            $email_link = md5($email);
-
-            /*code*/
-            $code = md5($name.time());
+            $email_link = md5($username.time());
 
             /*generate activation link*/
-            //$link = 'http://internetsolutions/basic/web/index.php?r=site%2Factivate&code='.md5($name.time());
-            $link = Yii::$app->urlManager->createAbsoluteUrl(['site/activate','code'=> $email_link,'link'=>$code]);
+            $link = Yii::$app->urlManager->createAbsoluteUrl(['site/activate','code'=> $email_link]);
 
-            if ($user = $model->registrations($link,$password)) {
+            if ($user = $model->registrations($email_link,$password)) {
                 /*sending email*/
-                $send = User::send_email($email,$link);
+                $send = User::send_email($model->username,$link);
                 return $this->redirect('index.php?r=site/confirmate');
             }
         } else {
@@ -87,12 +83,34 @@ class SiteController extends Controller
         }
     }
 
-    public function actionActivate($code,$link)
+    public function actionActivate($code)
     { 
-        return $this->render('activate', [
-            'code' => $code,
-            'link' => $link,
-        ]);
+
+        $result = User::findByUsername_hash($code);
+
+        if ($result != null) {
+            $time = time();
+            $check_time = User::findByUsername_check_time($time,$result['u_time_link']);
+            if ($check_time == true) {
+                /*password*/
+                $password = substr(md5($result['username']),0,8);
+                /*add password to user*/
+                $add = User::add_password($password,$result['username']);
+
+                if ($add == 1) {
+                    /*sending password*/
+                    $send = User::send_password($password,$result['username']);
+
+                    return $this->render('activate', [
+                        'code' => $code,
+                    ]);
+                }
+            } else {
+
+            }
+        } else {
+
+        }
     }
 
     public function actionConfirmate()
