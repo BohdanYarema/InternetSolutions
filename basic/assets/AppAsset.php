@@ -25,6 +25,8 @@ class AppAsset extends AssetBundle
         "http://fonts.googleapis.com/css?family=Roboto:400,400italic,300italic,300,500,500italic,700,700italic",
         /*BOOTSTRAP CSS*/
         "themes/assets/bootstrap/css/bootstrap.min.css",
+        /*bootstrap dashboard*/
+        "themes/assets/css/dashboard.css",
         /* MT ICONS FONT */
         "themes/assets/fonts/mt-icons/mt-icons.css",
         /* FANCYBOX */
@@ -88,9 +90,11 @@ class AppAsset extends AssetBundle
         'themes/assets/plugins/countdown/jquery.countdown.min.js',
         /*custom js*/
         'themes/assets/js/custom.js',
+        /*assets bootstrap*/
+        'themes/assets/js/docs.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        //'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

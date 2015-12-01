@@ -6,15 +6,18 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\module\admin\AdminModule',
+        ],
+        'profile' => [
+            'class' => 'app\module\profile\ProfileModule',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'like',
-        ],
-        'modules' => [
-            'Admin' => [
-                'class' => 'app\module\admin\AdminModule',
-            ],
         ],
 
         'cache' => [
