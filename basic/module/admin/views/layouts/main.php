@@ -40,7 +40,7 @@ ModuleAsset::register($this);
                 <div class="placeholder">
                     <img src="/basic/web/themes/images/admiral.jpg" class="img-responsive" alt="200x200">
                     <h4>Admin</h4>
-                    <h5 class="text-muted"><?echo Yii::$app->user->identity['username'];?></h5>
+                    <h5 style="word-wrap: break-word;" class="text-muted"><?echo Yii::$app->user->identity['username'];?></h5>
                 </div>
                 <div class="clearfix"></div>
                 <ul class="nav nav-sidebar">

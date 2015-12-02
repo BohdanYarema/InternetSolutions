@@ -48,7 +48,14 @@ class Registration extends ActiveRecord
         $user->date_post = $data;
         $user->update_post = $data;
 
+        $check = $user->save() ? $user:null;
+
+        // нужно добавить следующие три строки:
+        $auth = Yii::$app->authManager;
+        $authorRole = $auth->getRole('author');
+        $auth->assign($authorRole, $user->getId());
+
         
-        return $user->save() ? $user:null; // сохраняем нового пользователя, если все ок то тру, елсе фолс
+        return  $check; // сохраняем нового пользователя, если все ок то тру, елсе фолс
     }
 }

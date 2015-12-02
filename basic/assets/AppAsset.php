@@ -26,7 +26,7 @@ class AppAsset extends AssetBundle
         /*BOOTSTRAP CSS*/
         "themes/assets/bootstrap/css/bootstrap.min.css",
         /*bootstrap dashboard*/
-        "themes/assets/css/dashboard.css",
+        //"themes/assets/css/dashboard.css",
         /* MT ICONS FONT */
         "themes/assets/fonts/mt-icons/mt-icons.css",
         /* FANCYBOX */
@@ -95,6 +95,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }
