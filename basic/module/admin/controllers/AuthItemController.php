@@ -12,8 +12,11 @@ use yii\filters\VerbFilter;
 /**
  * AuthItemController implements the CRUD actions for AuthItem model.
  */
-class AuthItemController extends Controller
+class AuthitemController extends Controller
 {
+
+    public $layout='main';
+
     public function behaviors()
     {
         return [

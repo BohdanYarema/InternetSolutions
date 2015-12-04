@@ -30,7 +30,10 @@ ModuleAsset::register($this);
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Your cabinet</a>
+                <? $url = Url::toRoute(['/profile']);?>
+                <a class="navbar-brand" href="<?=$url;?>">Кабинет(<?echo Yii::$app->user->identity['u_company'];?>)</a>
+                <? $url = Url::toRoute(['/site/index']);?>
+                <a class="navbar-brand" href="<?=$url;?>" target="_blank">На главную сайта</a>
             </div>
         </div>
     </div>
@@ -39,8 +42,8 @@ ModuleAsset::register($this);
             <div class="col-sm-3 col-md-2 sidebar">
                 <div class="placeholder">
                     <img src="/basic/web/themes/images/admiral.jpg" class="img-responsive" alt="200x200">
-                    <h4>Name</h4>
-                    <h5 class="text-muted"><?echo Yii::$app->user->identity['username'];?></h5>
+                    <h4><? echo Yii::$app->user->identity->u_snp; ?></h4>
+                    <h5 style="word-wrap: break-word;" class="text-muted"><?echo Yii::$app->user->identity['username'];?></h5>
                 </div>
                 <div class="clearfix"></div>
                 <ul class="nav nav-sidebar">

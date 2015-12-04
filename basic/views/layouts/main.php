@@ -32,7 +32,7 @@ AppAsset::register($this);
 			<div id="header-top">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-8">
+						<div class="col-sm-6">
 							<div class="widget widget-contact">
 								<ul>
 									<li>    
@@ -47,21 +47,36 @@ AppAsset::register($this);
 								</ul>
 							</div><!-- widget-contact -->
 						</div><!-- col -->
-						<div class="col-sm-4">
+						<div class="col-sm-6 text-right">
 							<div class="widget widget-contact">
 								<ul>
-									<li>    
-										<? $url = Url::toRoute(['site/login']);?>
-										<a href="<?=$url;?>" data-method="post">ВХОД В КАБИНЕТ</a>
-									</li>
-									<li>    
-										<? $url = Url::toRoute(['site/logout']);?>
-										<a href="<?=$url;?>" data-method="post">ВЫХОД (<? echo Yii::$app->user->identity->username;?>)</a>
-									</li>
-									<li>
-										<? $url = Url::toRoute(['site/registration']);?>
-										<a href="<?=$url;?>">РЕГИСТРАЦИЯ</a>
-									</li>
+									<?
+										if (Yii::$app->user->isGuest) {
+											?>
+												<li>
+												<? $url = Url::toRoute(['site/registration']);?>
+												<a href="<?=$url;?>">РЕГИСТРАЦИЯ</a>
+											<?
+											?>
+												<? $url = Url::toRoute(['site/login']);?>
+												<a href="<?=$url;?>" data-method="post">ВХОД В КАБИНЕТ</a>
+												</li>
+											<?
+										}
+									?>
+									 
+									<?
+										if (!Yii::$app->user->isGuest) {
+											?>
+												<li> 
+													<? $url = Url::toRoute(['/profile']);?>
+													<a href="<?=$url;?>" target="_blank">ЛИЧНЫЙ КАБИНЕТ (<? echo Yii::$app->user->identity->username;?>)</a>
+													<? $url = Url::toRoute(['site/logout']);?>
+													<a href="<?=$url;?>" data-method="post">ВЫХОД</a>
+												</li>
+											<?
+										}
+									?>  
 								</ul>
 							</div><!-- widget-contact-registration -->
 						</div><!-- col -->

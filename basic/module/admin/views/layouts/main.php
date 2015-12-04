@@ -30,7 +30,8 @@ ModuleAsset::register($this);
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Internet solutions</a>
+                <? $url = Url::toRoute(['/site/index']);?>
+                <a class="navbar-brand" href="<?=$url;?>" target="_blank">На сайт</a>
             </div>
         </div>
     </div>
@@ -44,7 +45,8 @@ ModuleAsset::register($this);
                 </div>
                 <div class="clearfix"></div>
                 <ul class="nav nav-sidebar">
-                    <li><a href="#">Пользователи</a></li>
+                    <? $url = Url::toRoute(['user/index']);?>
+                    <li><a href="<?=$url;?>">Пользователи</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
