@@ -96,7 +96,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function add_password($password,$username)
     {
         $data = time();
-        $add = Yii::$app->db->createCommand()->update('User', ['password' => $password,'u_status' => 1], 'username = "'.$username.'"')->execute();
+        $add = Yii::$app->db->createCommand()->update('User', ['password' => $password,'u_status' => 1,'activate_post' => time()], 'username = "'.$username.'"')->execute();
     
         return $add;
     }

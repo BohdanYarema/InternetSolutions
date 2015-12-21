@@ -586,7 +586,7 @@
 		$(".banner").revolution({
 			delay: 8000,
 			startwidth: 1170,
-			startheight: 715,
+			startheight: 500,
 			startWithSlide: 0,
 			
 			fullScreenAlignForce: "off",

@@ -59,7 +59,7 @@ AppAsset::register($this);
 											<?
 											?>
 												<? $url = Url::toRoute(['site/login']);?>
-												<a href="<?=$url;?>" data-method="post">ВХОД В КАБИНЕТ</a>
+												<a href="<?=$url;?>">ВХОД В КАБИНЕТ</a>
 												</li>
 											<?
 										}

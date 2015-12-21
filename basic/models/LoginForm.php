@@ -32,6 +32,8 @@ class LoginForm extends Model
         ];
     }
 
+
+
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
@@ -48,6 +50,16 @@ class LoginForm extends Model
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }
+    }
+
+     /*Название атрибутов*/
+    public function attributeLabels()
+    {
+        return [
+            'username'      => 'E-mail',
+            'password'      => 'Пароль',
+            'rememberMe'    => 'Запомнить меня'
+        ];
     }
 
     /**

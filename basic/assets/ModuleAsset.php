@@ -29,8 +29,6 @@ class ModuleAsset extends AssetBundle
         "themes/assets/css/dashboard.css",
     ];
     public $js = [
-        /*jquery*/
-        'themes/assets/plugins/jquery/jquery-2.1.4.min.js',
         /*bootstrap js*/
         'themes/assets/bootstrap/js/bootstrap.min.js',
         /*viewport*/

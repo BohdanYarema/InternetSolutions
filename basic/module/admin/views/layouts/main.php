@@ -18,7 +18,7 @@ ModuleAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="shortcut icon" href="/basic/web/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/basic/web/favicon.ico" type="image/x-icon">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -30,6 +30,8 @@ ModuleAsset::register($this);
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
+                <? $url = Url::toRoute(['/admin']);?>
+                <a class="navbar-brand" href="<?=$url;?>">Главная</a>
                 <? $url = Url::toRoute(['/site/index']);?>
                 <a class="navbar-brand" href="<?=$url;?>" target="_blank">На сайт</a>
             </div>
@@ -46,7 +48,15 @@ ModuleAsset::register($this);
                 <div class="clearfix"></div>
                 <ul class="nav nav-sidebar">
                     <? $url = Url::toRoute(['user/index']);?>
-                    <li><a href="<?=$url;?>">Пользователи</a></li>
+                    <li class="clicks"><a href="<?=$url;?>">Клиенты</a></li>
+                    <? $url = Url::toRoute(['projects/index']);?>
+                    <li class="clicks"><a href="<?=$url;?>">Проэкты</a></li>
+                    <? $url = Url::toRoute(['compaings/index']);?>
+                    <li class="clicks"><a href="<?=$url;?>">Компании</a></li>
+                    <? $url = Url::toRoute(['spheres/index']);?>
+                    <li class="clicks"><a href="<?=$url;?>">Сферы деятельности</a></li>
+                    <? $url = Url::toRoute(['logs/index']);?>
+                    <li class="clicks"><a href="<?=$url;?>">Логи</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -55,7 +65,6 @@ ModuleAsset::register($this);
         </div>
     </div>
 </body>
-
 <?php $this->endBody() ?>
 </body>
 </html>

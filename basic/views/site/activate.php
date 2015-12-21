@@ -26,8 +26,6 @@
                                 С уважением,
                                 Команда Internet Solutions»
                             </p>
-                            <p><?=$code;?></p>
-                            <p><?=$link;?></p>
 						</div><!-- headline -->
 					</div><!-- col -->
 				</div><!-- row -->
