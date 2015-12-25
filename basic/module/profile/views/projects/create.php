@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\module\admin\models\Compaings */
+/* @var $model app\module\profile\models\Projects */
 
-$this->title = 'Create Compaings';
-$this->params['breadcrumbs'][] = ['label' => 'Compaings', 'url' => ['index']];
+$this->title = 'Создать проект';
+$this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="compaings-create">
+<div class="spheres-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

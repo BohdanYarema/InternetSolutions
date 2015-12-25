@@ -1,12 +1,12 @@
 <?php
 
-namespace app\module\admin\controllers;
+namespace app\module\profile\controllers;
 
 use Yii;
-use app\module\admin\models\Projects;
-use app\module\admin\models\Compaings;
-use app\module\admin\models\CompaingsSearch;
-use app\module\admin\models\ProjectsSearch;
+use app\module\profile\models\Projects;
+use app\module\profile\models\Compaings;
+use app\module\profile\models\CompaingsSearch;
+use app\module\profile\models\ProjectsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -71,9 +71,12 @@ class ProjectsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    /* public function actionCreate()
+     public function actionCreate()
     {
         $model = new Projects();
+        $model->date_post = time();
+        $model->date_update = time();
+        $model->id_user = Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -82,7 +85,7 @@ class ProjectsController extends Controller
                 'model' => $model,
             ]);
         }
-    }*/
+    }
 
     /**
      * Updates an existing Projects model.
@@ -110,13 +113,13 @@ class ProjectsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    /*public function actionDelete($id)
+    public function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
-    */
+    
     /**
      * Finds the Projects model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -1,30 +1,25 @@
 <?php
 
-namespace app\module\admin\models;
+namespace app\module\profile\models;
 
 use Yii;
 
 /**
- * This is the model class for table "Projects".
+ * This is the model class for table "Spheres".
  *
  * @property integer $id
  * @property string $name
  * @property integer $date_post
  * @property integer $date_update
  */
-class Projects extends \yii\db\ActiveRecord
+class Spheres extends \yii\db\ActiveRecord
 {
-
-    public function getAuthor() {
-        return $this->hasOne(User::className(), ['id' => 'id_user']);
-    }
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'Projects';
+        return 'Spheres';
     }
 
     /**
@@ -33,7 +28,7 @@ class Projects extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'date_post', 'date_update', 'id_user'], 'integer'],
+            [['id', 'date_post', 'date_update'], 'integer'],
             [['name'], 'string']
         ];
     }
@@ -44,11 +39,15 @@ class Projects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код проэкта',
+            'id' => 'Код сферы',
             'name' => 'Название',
             'date_post' => 'Дата создания',
             'date_update' => 'Дата обновления',
-            'id_user' => 'Автор',
         ];
+    }
+
+    public static function all_spheres()
+    {
+        return static::find()->all();
     }
 }

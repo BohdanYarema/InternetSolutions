@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\module\admin\models\CompaingsSearch */
+/* @var $searchModel app\module\profile\models\CompaingsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Компании';
@@ -27,11 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'date_end',
             'date_update',
             [
-                'attribute' => 'author',
-                'label' => 'Автор',
-                'value' => 'author.username'
-            ],
-            [
                 'attribute' => 'spheres',
                 'label' => 'Название сферы деятельности',
                 'value' => 'spheres.name'
@@ -41,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Название проэкта',
                 'value' => 'projects.name'
             ],
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

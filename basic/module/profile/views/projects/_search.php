@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\module\admin\models\CompaingsSearch */
+/* @var $model app\module\profile\models\ProjectsSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="compaings-search">
+<div class="projects-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -19,21 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'about') ?>
-
-    <?= $form->field($model, 'link') ?>
-
     <?= $form->field($model, 'date_post') ?>
 
-    <?php // echo $form->field($model, 'date_end') ?>
+    <?= $form->field($model, 'date_update') ?>
 
-    <?php // echo $form->field($model, 'date_update') ?>
-
-    <?php // echo $form->field($model, 'id_project') ?>
-
-    <?php // echo $form->field($model, 'id_user') ?>
-
-    <?php // echo $form->field($model, 'id_sphere') ?>
+    <?= $form->field($model, 'id_user') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>

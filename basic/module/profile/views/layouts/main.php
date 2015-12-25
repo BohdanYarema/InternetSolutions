@@ -47,7 +47,11 @@ ModuleAsset::register($this);
                 </div>
                 <div class="clearfix"></div>
                 <ul class="nav nav-sidebar">
-                    <li><a href="#">Рекламные кампании</a></li>
+                    <? $url = Url::toRoute(['projects/index']);?>
+                    <li class="clicks"><a href="<?=$url;?>">Проэкты</a></li>
+                    <? $url = Url::toRoute(['compaings/index']);?>
+                    <!-- <li class="clicks"><a href="<?=$url;?>">Компании</a></li>
+                    <? $url = Url::toRoute(['spheres/index']);?> -->
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

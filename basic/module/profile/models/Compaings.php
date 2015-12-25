@@ -1,6 +1,6 @@
 <?php
 
-namespace app\module\admin\models;
+namespace app\module\profile\models;
 
 use Yii;
 
@@ -48,8 +48,9 @@ class Compaings extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'about', 'link'], 'string'],
-            [['date_post', 'date_end', 'date_update', 'id_project', 'id_user', 'id_sphere'], 'integer'],
-            [['id_project', 'id_user', 'id_sphere'], 'required']
+            [['date_post', 'date_update', 'id_project', 'id_user', 'id_sphere'], 'integer'],
+            [['id_project', 'id_user', 'id_sphere'], 'required'],
+            [['date_end'], 'default', 'value' => null],
         ];
     }
 

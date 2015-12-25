@@ -1,21 +1,20 @@
 <?php
 
-namespace app\module\admin\controllers;
+namespace app\module\profile\controllers;
 
 use Yii;
-use app\module\admin\models\Projects;
-use app\module\admin\models\Compaings;
-use app\module\admin\models\CompaingsSearch;
-use app\module\admin\models\ProjectsSearch;
+use app\module\profile\models\Projects;
+use app\module\profile\models\Spheres;
+use app\module\profile\models\Compaings;
+use app\module\profile\models\CompaingsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
 
 /**
- * ProjectsController implements the CRUD actions for Projects model.
+ * CompaingsController implements the CRUD actions for Compaings model.
  */
-class ProjectsController extends Controller
+class CompaingsController extends Controller
 {
 
     public $layout='main';
@@ -33,12 +32,12 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Lists all Projects models.
+     * Lists all Compaings models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProjectsSearch();
+        $searchModel = new CompaingsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -48,44 +47,52 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Displays a single Projects model.
+     * Displays a single Compaings model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-
-        $searchModel = new CompaingsSearch();
-        $dataProvider = $searchModel->search_view(Yii::$app->request->queryParams);
-
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Projects model.
+     * Creates a new Compaings model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    /* public function actionCreate()
+    public function actionCreate()
     {
-        $model = new Projects();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $projects = Projects::all_users_projects(Yii::$app->user->identity->id); // проекты пользователя
+        $spheres = Spheres::all_spheres(); // список сфер деятельности
+
+        $model = new Compaings();
+
+        $time = strtotime(Yii::$app->request->post('date_end'));
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->date_post = time();
+            $model->date_update = time();
+            $model->id_user = Yii::$app->user->identity->id;
+            $model->date_end = $time;
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'projects' => $projects,
+                'spheres' => $spheres,
             ]);
         }
-    }*/
+    }
 
     /**
-     * Updates an existing Projects model.
+     * Updates an existing Compaings model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -93,40 +100,43 @@ class ProjectsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->date_update = time();
+        $projects = Projects::all_users_projects(Yii::$app->user->identity->id); // проекты пользователя
+        $spheres = Spheres::all_spheres(); // список сфер деятельности
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'projects' => $projects,
+                'spheres' => $spheres,
             ]);
         }
     }
 
     /**
-     * Deletes an existing Projects model.
+     * Deletes an existing Compaings model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
-    /*public function actionDelete($id)
+    public function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
-    */
+
     /**
-     * Finds the Projects model based on its primary key value.
+     * Finds the Compaings model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Projects the loaded model
+     * @return Compaings the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Projects::findOne($id)) !== null) {
+        if (($model = Compaings::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

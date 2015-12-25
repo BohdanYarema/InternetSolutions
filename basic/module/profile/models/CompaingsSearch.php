@@ -1,11 +1,11 @@
 <?php
 
-namespace app\module\admin\models;
+namespace app\module\profile\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\module\admin\models\Compaings;
+use app\module\profile\models\Compaings;
 
 /**
  * CompaingsSearch represents the model behind the search form about `app\module\admin\models\Compaings`.
@@ -48,24 +48,15 @@ class CompaingsSearch extends Compaings
     {
         $query = Compaings::find();
 
-        $query->joinWith(['author']);
         $query->joinWith(['spheres']);
         $query->joinWith(['projects']);
+        $query->where(['compaings.id_user' => Yii::$app->user->identity->id]); 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         /*Сортировка*/
-
-        // Important: here is how we set up the sorting
-        // The key is the attribute name on our "TourSearch" instance
-        $dataProvider->sort->attributes['author'] = [
-            // The tables are the ones our relation are configured to
-            // in my case they are prefixed with "tbl_"
-            'asc' => ['user.username' => SORT_ASC],
-            'desc' => ['user.username' => SORT_DESC],
-        ];
 
         $dataProvider->sort->attributes['spheres'] = [
             // The tables are the ones our relation are configured to
@@ -102,7 +93,6 @@ class CompaingsSearch extends Compaings
         $query->andFilterWhere(['like', 'name', $this->name])
               ->andFilterWhere(['like', 'about', $this->about])
               ->andFilterWhere(['like', 'link', $this->link])
-              ->andFilterWhere(['like', 'user.username', $this->author])
               ->andFilterWhere(['like', 'spheres.name', $this->author])
               ->andFilterWhere(['like', 'projects.name', $this->projects]);
         return $dataProvider;
@@ -117,22 +107,12 @@ class CompaingsSearch extends Compaings
         /*Compaings::find()->with('author')->where(['id_project' => $params['id']])*/
         $query = Compaings::find();
         
-        $query->joinWith(['author']);
         $query->joinWith(['spheres']);
         $query->where(['id_project' => $params['id']]); 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
-        // Important: here is how we set up the sorting
-        // The key is the attribute name on our "TourSearch" instance
-        $dataProvider->sort->attributes['author'] = [
-            // The tables are the ones our relation are configured to
-            // in my case they are prefixed with "tbl_"
-            'asc' => ['user.username' => SORT_ASC],
-            'desc' => ['user.username' => SORT_DESC],
-        ];
 
         // Important: here is how we set up the sorting
         // The key is the attribute name on our "TourSearch" instance
@@ -164,7 +144,6 @@ class CompaingsSearch extends Compaings
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'about', $this->about])
             ->andFilterWhere(['like', 'link', $this->link])
-            ->andFilterWhere(['like', 'user.username', $this->author])
             ->andFilterWhere(['like', 'spheres.name', $this->spheres]);
 
         return $dataProvider;

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\module\admin\models;
+namespace app\module\profile\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\module\admin\models\Projects;
+use app\module\profile\models\Projects;
 
 /**
  * ProjectsSearch represents the model behind the search form about `app\module\admin\models\Projects`.
@@ -47,20 +47,11 @@ class ProjectsSearch extends Projects
     {
         $query = Projects::find();
 
-        $query->joinWith(['author']);
+        $query->where(['id_user' => Yii::$app->user->identity->id]); 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
-        // Important: here is how we set up the sorting
-        // The key is the attribute name on our "TourSearch" instance
-        $dataProvider->sort->attributes['author'] = [
-            // The tables are the ones our relation are configured to
-            // in my case they are prefixed with "tbl_"
-            'asc' => ['user.username' => SORT_ASC],
-            'desc' => ['user.username' => SORT_DESC],
-        ];
 
         $this->load($params);
 
@@ -77,8 +68,7 @@ class ProjectsSearch extends Projects
             'id_user' => $this->id_user,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-        ->andFilterWhere(['like', 'user.username', $this->author]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

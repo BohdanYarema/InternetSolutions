@@ -3,19 +3,21 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\module\admin\models\Projects */
+/* @var $model app\module\profile\models\Compaings */
 
-$this->title = 'Обновить информацию о проэкте: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
+$this->title = 'Обновить информацию о компании: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Compaings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="projects-update">
+<div class="compaings-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
+        'projects' => $projects,
+        'spheres' => $spheres,
     ]) ?>
 
 </div>

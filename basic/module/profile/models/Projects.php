@@ -1,6 +1,6 @@
 <?php
 
-namespace app\module\admin\models;
+namespace app\module\profile\models;
 
 use Yii;
 
@@ -14,11 +14,7 @@ use Yii;
  */
 class Projects extends \yii\db\ActiveRecord
 {
-
-    public function getAuthor() {
-        return $this->hasOne(User::className(), ['id' => 'id_user']);
-    }
-
+    
     /**
      * @inheritdoc
      */
@@ -34,7 +30,8 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'date_post', 'date_update', 'id_user'], 'integer'],
-            [['name'], 'string']
+            [['name'], 'required'],
+            ['name', 'string', 'length' => [3]],
         ];
     }
 
@@ -50,5 +47,10 @@ class Projects extends \yii\db\ActiveRecord
             'date_update' => 'Дата обновления',
             'id_user' => 'Автор',
         ];
+    }
+
+    public static function all_users_projects($user_id)
+    {
+        return static::find()->where(['id_user' => $user_id])->all();
     }
 }
