@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             'about:ntext',
             'link:ntext',
+            'unique_link:ntext',
             [
                 'attribute' => 'date_post',
                 'format' =>  ['date', 'Y:M:d H:i:s'],

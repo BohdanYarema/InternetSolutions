@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             'about:ntext',
             'link:ntext',
+            'unique_link:ntext',
             'date_post',
             'date_end',
             'date_update',

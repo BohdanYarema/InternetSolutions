@@ -23,6 +23,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'link') ?>
 
+    <?= $form->field($model, 'unique_link') ?>
+
     <?= $form->field($model, 'date_post') ?>
 
     <?php // echo $form->field($model, 'date_end') ?>

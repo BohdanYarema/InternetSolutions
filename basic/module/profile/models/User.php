@@ -21,6 +21,10 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+    public $password_old;
+    public $password_new;
+    public $password_new_dublicate; 
+
     /**
      * @inheritdoc
      */
@@ -29,16 +33,28 @@ class User extends \yii\db\ActiveRecord
         return 'User';
     }
 
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['username', 'password', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post', 'update_post'], 'required'],
-            [['username', 'password', 'auth_key', 'u_snp', 'u_company', 'u_activation_link'], 'string'],
-            [['u_status', 'u_time_link', 'date_post', 'update_post', 'activate_post'], 'integer']
+            [['username', 'password', 'password_old', 'password_new_dublicate', 'password_new', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post', 'update_post'], 'required'],
+            [['username', 'password', 'password_old', 'password_new_dublicate', 'password_new', 'auth_key', 'u_snp', 'u_company', 'u_activation_link'], 'string'],
+            [['u_status', 'u_time_link', 'date_post', 'update_post', 'activate_post'], 'integer'],
+            [['password_new_dublicate'], 'compare', 'compareAttribute' => 'password_new','message'=>'Пароли не совпадают.'] ,
+            //[['password_old'], 'compare', 'compareAttribute' => 'password','message'=>'Пароли не совпадают.'] ,
+            ['password_old', 'compare', 'compareValue'=>$this->bla()], //, 'on'=>'changePassword'
+            ['password_new', 'string', 'length' => [6]],
+            ['password_new', 'match', 'pattern' => '/(.)\\1{2}/', 'message'=>'Пароль содержит больше 3-х одинаковых символов.', 'not' => 'password_new']
         ];
+    }
+
+    public function bla()
+    {
+        $password = '2404';
+        return $password;
     }
 
     /**
@@ -59,6 +75,9 @@ class User extends \yii\db\ActiveRecord
             'date_post' => 'Дата создания',
             'update_post' => 'Дата обновления',
             'activate_post' => 'Дата активации',
+            'password_old' => '0',
+            'password_new' => '1',
+            'password_new_dublicate' => '2',
         ];
     }
 }

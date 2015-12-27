@@ -8,9 +8,9 @@ use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\ModuleAsset;
+use app\assets\ModuleAsset_profile;
 
-ModuleAsset::register($this);
+ModuleAsset_profile::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -47,7 +47,9 @@ ModuleAsset::register($this);
                 </div>
                 <div class="clearfix"></div>
                 <ul class="nav nav-sidebar">
-                    <? $url = Url::toRoute(['projects/index']);?>
+                    <? $url = Url::toRoute(['user/view']);?>
+                    <li class="clicks"><a href="<?=$url;?>">Настройки</a></li>
+                    <? $url = Url::toRoute(['compaings/index']);?>
                     <li class="clicks"><a href="<?=$url;?>">Проэкты</a></li>
                     <? $url = Url::toRoute(['compaings/index']);?>
                     <!-- <li class="clicks"><a href="<?=$url;?>">Компании</a></li>

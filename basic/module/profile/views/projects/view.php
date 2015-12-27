@@ -47,6 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             'about:ntext',
             'link:ntext',
+            'unique_link:ntext',
             [
                 'attribute' => 'date_end',
                 'format' =>  ['date', 'Y:m:s H:i:s'],

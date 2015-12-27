@@ -24,7 +24,7 @@ class CompaingsSearch extends Compaings
     {
         return [
             [['id', 'date_post', 'date_end', 'date_update', 'id_project', 'id_user', 'id_sphere'], 'integer'],
-            [['name', 'about', 'link', 'author', 'spheres','projects'], 'safe'],
+            [['name', 'unique_link', 'about', 'link', 'author', 'spheres','projects'], 'safe'],
         ];
     }
 
@@ -93,6 +93,7 @@ class CompaingsSearch extends Compaings
         $query->andFilterWhere(['like', 'name', $this->name])
               ->andFilterWhere(['like', 'about', $this->about])
               ->andFilterWhere(['like', 'link', $this->link])
+              ->andFilterWhere(['like', 'unique_link', $this->unique_link])
               ->andFilterWhere(['like', 'spheres.name', $this->author])
               ->andFilterWhere(['like', 'projects.name', $this->projects]);
         return $dataProvider;
@@ -143,6 +144,7 @@ class CompaingsSearch extends Compaings
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'about', $this->about])
+            ->andFilterWhere(['like', 'unique_link', $this->unique_link])
             ->andFilterWhere(['like', 'link', $this->link])
             ->andFilterWhere(['like', 'spheres.name', $this->spheres]);
 

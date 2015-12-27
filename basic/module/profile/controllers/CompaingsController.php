@@ -74,6 +74,9 @@ class CompaingsController extends Controller
         $time = strtotime(Yii::$app->request->post('date_end'));
 
         if ($model->load(Yii::$app->request->post())) {
+
+            $unique_link = Compaings::transliterate($model->name);
+            $model->unique_link = $unique_link;
             $model->date_post = time();
             $model->date_update = time();
             $model->id_user = Yii::$app->user->identity->id;

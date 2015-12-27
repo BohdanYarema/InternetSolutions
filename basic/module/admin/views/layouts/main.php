@@ -8,9 +8,9 @@ use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\ModuleAsset;
+use app\assets\ModuleAsset_admin;
 
-ModuleAsset::register($this);
+ModuleAsset_admin::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -25,46 +25,162 @@ ModuleAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-    <body>
+    <header id="header" class="clearfix" data-spy="affix" data-offset-top="65">
+        <ul class="header-inner">
+            
+            <!-- Logo -->
+            <li class="logo">
+                <a href=""><img src="/basic/web/themes_admin/img/logo.png" alt=""></a>
+                <div id="menu-trigger"><i class="zmdi zmdi-menu"></i></div>
+            </li>
+            
+            <!-- Search -->
+            <li class="top-search">
+                <input class="ts-input" placeholder="Search..." type="text">
+                
+                <i class="ts-reset zmdi zmdi-close"></i>
+            </li>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <? $url = Url::toRoute(['/admin']);?>
-                <a class="navbar-brand" href="<?=$url;?>">Главная</a>
-                <? $url = Url::toRoute(['/site/index']);?>
-                <a class="navbar-brand" href="<?=$url;?>" target="_blank">На сайт</a>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <div class="placeholder">
-                    <img src="/basic/web/themes/images/admiral.jpg" class="img-responsive" alt="200x200">
-                    <h4>Admin</h4>
-                    <h5 style="word-wrap: break-word;" class="text-muted"><?echo Yii::$app->user->identity['username'];?></h5>
+            <!-- Time -->
+            <li class="pull-right hidden-xs">
+                <div id="time">
+                    <span id="t-hours"></span>
+                    <span id="t-min"></span>
+                    <span id="t-sec"></span>
                 </div>
-                <div class="clearfix"></div>
-                <ul class="nav nav-sidebar">
-                    <? $url = Url::toRoute(['user/index']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Клиенты</a></li>
-                    <? $url = Url::toRoute(['projects/index']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Проэкты</a></li>
-                    <? $url = Url::toRoute(['compaings/index']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Компании</a></li>
-                    <? $url = Url::toRoute(['spheres/index']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Сферы деятельности</a></li>
-                    <? $url = Url::toRoute(['logs/index']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Логи</a></li>
+            </li>
+        </ul>
+    </header>
+
+    <aside id="sidebar">
+        <!--| MAIN MENU |-->
+        <ul class="side-menu">
+            <li class="sm-sub sms-profile">
+                <a class="clearfix" href="">
+                    <img src="/basic/web/themes/images/admiral.jpg" alt="">
+    
+                    <span class="f-11">
+                        <span class="d-block"><?echo Yii::$app->user->identity['u_snp'];?></span>
+                        <small class="text-lowercase"><?echo Yii::$app->user->identity['username'];?></small>
+                    </span>
+                </a>
+                <!-- <ul>
+                    <li><a href="">View Profile</a></li>
+                    <li><a href="">Privacy Settings</a></li>
+                    <li><a href="">Settings</a></li>
+                    <li><a href="">Logout</a></li>
+                </ul> -->
+            </li>
+            <? $url = Url::toRoute(['/admin']);?>
+            <li class="active">
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <? $url = Url::toRoute(['user/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-format-underlined"></i>
+                    <span>Клиенты</span>
+                </a>
+            </li>
+            <? $url = Url::toRoute(['projects/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-format-underlined"></i>
+                    <span>Проэкты</span>
+                </a>
+            </li>
+            <? $url = Url::toRoute(['compaings/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-format-underlined"></i>
+                    <span>Компании</span>
+                </a>
+            </li>
+            <? $url = Url::toRoute(['spheres/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-format-underlined"></i>
+                    <span>Сферы деятельности</span>
+                </a>
+            </li>
+            <? $url = Url::toRoute(['logs/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-format-underlined"></i>
+                    <span>Логи</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <section id="content">
+        <div class="container">
+            <?= $content ?>
+        </div>        
+    </section>
+
+    <footer id="footer">
+        Copyright © 2015 SuperFlat Admin
+        
+        <ul class="f-menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Reports</a></li>
+            <li><a href="">Support</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </footer>
+    
+    <!-- Older IE Warning Message -->
+    <!--[if lt IE 9]>
+        <div class="ie-warning">
+            <h1 class="c-white">Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+            <div class="iew-container">
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="img/browsers/chrome.png" alt="">
+                            <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="img/browsers/firefox.png" alt="">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="img/browsers/opera.png" alt="">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="img/browsers/safari.png" alt="">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="img/browsers/ie.png" alt="">
+                            <div>IE (New)</div>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <?= $content ?>
-            </div>
-        </div>
-    </div>
-</body>
+            <p>Sorry for the inconvenience!</p>
+        </div>   
+    <![endif]-->
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+        <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <![endif]-->
 <?php $this->endBody() ?>
 </body>
 </html>
