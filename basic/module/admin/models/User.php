@@ -47,18 +47,18 @@ class User extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Идентификатор пользователя',
+            'id' => 'Код',
             'username' => 'Логин',
             'password' => 'Пароль',
-            'auth_key' => 'Авторизационній ключ',
+            'auth_key' => 'Авторизационный ключ',
             'u_snp' => 'ФИО',
             'u_company' => 'Компания',
             'u_status' => 'Статус',
             'u_activation_link' => 'Активационная ссылка',
             'u_time_link' => 'Время ссылки',
-            'date_post' => 'Дата создания',
-            'update_post' => 'Дата обновления',
-            'activate_post' => 'Дата активации',
+            'date_post' => 'Cоздан',
+            'update_post' => 'Обновлен',
+            'activate_post' => 'Активирован',
         ];
     }
 }

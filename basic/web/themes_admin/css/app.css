@@ -6,6 +6,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -12270,4 +12271,11 @@ a.thumbnail.active {
 }
 .mCSB_inside > .mCSB_container {
   margin-right: 0;
+}
+
+/*custom */
+
+.pagination {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;     
 }

@@ -23,6 +23,15 @@ ModuleAsset_admin::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
+ <style type="text/css">
+        .bootgrid-table th {
+            overflow: hidden;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
 <body>
 <?php $this->beginBody() ?>
     <header id="header" class="clearfix" data-spy="affix" data-offset-top="65">
@@ -32,13 +41,6 @@ ModuleAsset_admin::register($this);
             <li class="logo">
                 <a href=""><img src="/basic/web/themes_admin/img/logo.png" alt=""></a>
                 <div id="menu-trigger"><i class="zmdi zmdi-menu"></i></div>
-            </li>
-            
-            <!-- Search -->
-            <li class="top-search">
-                <input class="ts-input" placeholder="Search..." type="text">
-                
-                <i class="ts-reset zmdi zmdi-close"></i>
             </li>
 
             <!-- Time -->
@@ -64,15 +66,9 @@ ModuleAsset_admin::register($this);
                         <small class="text-lowercase"><?echo Yii::$app->user->identity['username'];?></small>
                     </span>
                 </a>
-                <!-- <ul>
-                    <li><a href="">View Profile</a></li>
-                    <li><a href="">Privacy Settings</a></li>
-                    <li><a href="">Settings</a></li>
-                    <li><a href="">Logout</a></li>
-                </ul> -->
             </li>
             <? $url = Url::toRoute(['/admin']);?>
-            <li class="active">
+            <li>
                 <a href="<?=$url;?>">
                     <i class="zmdi zmdi-home"></i>
                     <span>Home</span>
@@ -81,35 +77,35 @@ ModuleAsset_admin::register($this);
             <? $url = Url::toRoute(['user/index']);?>
             <li>
                 <a href="<?=$url;?>">
-                    <i class="zmdi zmdi-format-underlined"></i>
+                    <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
                     <span>Клиенты</span>
                 </a>
             </li>
             <? $url = Url::toRoute(['projects/index']);?>
             <li>
                 <a href="<?=$url;?>">
-                    <i class="zmdi zmdi-format-underlined"></i>
+                    <i class="zmdi zmdi-folder-person zmdi-hc-fw"></i>
                     <span>Проэкты</span>
                 </a>
             </li>
             <? $url = Url::toRoute(['compaings/index']);?>
             <li>
                 <a href="<?=$url;?>">
-                    <i class="zmdi zmdi-format-underlined"></i>
+                    <i class="zmdi zmdi-folder-person zmdi-hc-fw"></i>
                     <span>Компании</span>
                 </a>
             </li>
             <? $url = Url::toRoute(['spheres/index']);?>
             <li>
                 <a href="<?=$url;?>">
-                    <i class="zmdi zmdi-format-underlined"></i>
+                    <i class="zmdi zmdi-arrows zmdi-hc-fw"></i>
                     <span>Сферы деятельности</span>
                 </a>
             </li>
             <? $url = Url::toRoute(['logs/index']);?>
             <li>
                 <a href="<?=$url;?>">
-                    <i class="zmdi zmdi-format-underlined"></i>
+                    <i class="zmdi zmdi-desktop-mac zmdi-hc-fw"></i>
                     <span>Логи</span>
                 </a>
             </li>
@@ -133,54 +129,6 @@ ModuleAsset_admin::register($this);
             <li><a href="">Contact</a></li>
         </ul>
     </footer>
-    
-    <!-- Older IE Warning Message -->
-    <!--[if lt IE 9]>
-        <div class="ie-warning">
-            <h1 class="c-white">Warning!!</h1>
-            <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-            <div class="iew-container">
-                <ul class="iew-download">
-                    <li>
-                        <a href="http://www.google.com/chrome/">
-                            <img src="img/browsers/chrome.png" alt="">
-                            <div>Chrome</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="img/browsers/firefox.png" alt="">
-                            <div>Firefox</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.opera.com">
-                            <img src="img/browsers/opera.png" alt="">
-                            <div>Opera</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.apple.com/safari/">
-                            <img src="img/browsers/safari.png" alt="">
-                            <div>Safari</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="img/browsers/ie.png" alt="">
-                            <div>IE (New)</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>Sorry for the inconvenience!</p>
-        </div>   
-    <![endif]-->
-
-    <!-- Placeholder for IE9 -->
-    <!--[if IE 9 ]>
-        <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
-    <![endif]-->
 <?php $this->endBody() ?>
 </body>
 </html>

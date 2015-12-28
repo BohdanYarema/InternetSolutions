@@ -26,9 +26,9 @@ class ModuleAsset_admin extends AssetBundle
         "themes_admin/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css",
         "themes_admin/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css",
         "themes_admin/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css",
+        "themes_admin/vendors/bower_components/jquery.bootgrid/dist/jquery.bootgrid.override.min.css",
     ];
     public $js = [
-        "themes_admin/vendors/bower_components/jquery/dist/jquery.min.js",
         "themes_admin/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js",
         
         "themes_admin/vendors/bower_components/flot/jquery.flot.js",
@@ -49,7 +49,7 @@ class ModuleAsset_admin extends AssetBundle
         "themes_admin/js/flot-charts/bar-chart.js",
         "themes_admin/js/charts.js",    
         "themes_admin/js/functions.js",
-        "themes_admin/js/demo.js",
+        //"themes_admin/js/demo.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',
