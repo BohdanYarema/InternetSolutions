@@ -25,43 +25,115 @@ ModuleAsset_profile::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-    <body>
+    
+<div id="wrapper">
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-cog"></i>
+        </button>
+        <? $url = Url::toRoute(['/profile']);?>
+        <a href="<?=$url;?>" class="navbar-brand navbar-brand-img">
+          <img src="themes_profile/img/logo.png" alt="MVP Ready">
+        </a>
+      </div> <!-- /.navbar-header -->
+      <nav class="collapse navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav navbar-right">        
+          <li class="dropdown navbar-profile">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+              <img src="themes_profile/global/img/avatars/avatar-4-sm.jpg" class="navbar-profile-avatar" alt="">
+              <span class="visible-xs-inline">@peterlandt &nbsp;</span>
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <? $url = Url::toRoute(['user/view']);?>
+                <a href="<?=$url;?>">
+                  <i class="fa fa-user"></i> 
+                  &nbsp;&nbsp;Профиль
+                </a>
+              </li>
+              <li>
+                <? $url = Url::toRoute(['user/update']);?>
+                <a href="<?=$url;?>">
+                  <i class="fa fa-cogs"></i> 
+                  &nbsp;&nbsp;Настройки профиля
+                </a>
+              </li>
+              <li>
+                <? $url = Url::toRoute(['user/password']);?>
+                <a href="<?=$url;?>">
+                  <i class="fa fa-cogs"></i> 
+                  &nbsp;&nbsp;Настройки пароля
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="./account-login.html">
+                  <i class="fa fa-sign-out"></i> 
+                  &nbsp;&nbsp;Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+        </div> <!-- /.container -->
+    </header>
+    <div class="mainnav ">
+        <div class="container">
+            <a class="mainnav-toggle" data-toggle="collapse" data-target=".mainnav-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+            </a>
+            <nav class="collapse mainnav-collapse" role="navigation">
+            <!-- <form class="mainnav-form" role="search">
+              <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
+              <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
+            </form> -->
+            <ul class="mainnav-menu">
+                <li class="dropdown active">
+                    <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Панель управления
+                        <i class="mainnav-caret"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <? $url = Url::toRoute(['projects/index']);?>
+                            <a href="<?=$url;?>">
+                            <i class="fa fa-dashboard dropdown-icon "></i> 
+                            Проекты
+                            </a>
+                        </li>
+                        <li>
+                            <? $url = Url::toRoute(['compaings/index']);?>
+                            <a href="<?=$url;?>">
+                            <i class="fa fa-dashboard dropdown-icon "></i> 
+                            Компании
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div> <!-- /.container -->
+</div> <!-- /.mainnav -->
+    
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <? $url = Url::toRoute(['/profile']);?>
-                <a class="navbar-brand" href="<?=$url;?>">Кабинет(<?echo Yii::$app->user->identity['u_company'];?>)</a>
-                <? $url = Url::toRoute(['/site/index']);?>
-                <a class="navbar-brand" href="<?=$url;?>" target="_blank">На главную сайта</a>
-            </div>
-        </div>
+<div class="content">
+        <div class="container">
+            <?= $content ?>
+        </div> <!-- /.container -->
+    </div> <!-- .content -->
+</div> <!-- /#wrapper -->
+
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">Copyright &copy; 2013-15 Jumpstart Themes.</p>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <div class="placeholder">
-                    <img src="/basic/web/themes/images/admiral.jpg" class="img-responsive" alt="200x200">
-                    <h4><? echo Yii::$app->user->identity->u_snp; ?></h4>
-                    <h5 style="word-wrap: break-word;" class="text-muted"><?echo Yii::$app->user->identity['username'];?></h5>
-                </div>
-                <div class="clearfix"></div>
-                <ul class="nav nav-sidebar">
-                    <? $url = Url::toRoute(['user/view']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Настройки</a></li>
-                    <? $url = Url::toRoute(['compaings/index']);?>
-                    <li class="clicks"><a href="<?=$url;?>">Проэкты</a></li>
-                    <? $url = Url::toRoute(['compaings/index']);?>
-                    <!-- <li class="clicks"><a href="<?=$url;?>">Компании</a></li>
-                    <? $url = Url::toRoute(['spheres/index']);?> -->
-                </ul>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <?= $content ?>
-            </div>
-        </div>
-    </div>
-</body>
+</footer>
 
 <?php $this->endBody() ?>
 </body>

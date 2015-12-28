@@ -50,7 +50,7 @@ class CompaingsSearch extends Compaings
 
         $query->joinWith(['spheres']);
         $query->joinWith(['projects']);
-        $query->where(['compaings.id_user' => Yii::$app->user->identity->id]); 
+        $query->where(['Compaings.id_user' => Yii::$app->user->identity->id]); 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

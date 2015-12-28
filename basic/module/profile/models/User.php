@@ -25,6 +25,8 @@ class User extends \yii\db\ActiveRecord
     public $password_new;
     public $password_new_dublicate; 
 
+    const SCENARIO_PASSWORD = 'password';
+
     /**
      * @inheritdoc
      */
@@ -40,21 +42,26 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'password_old', 'password_new_dublicate', 'password_new', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post', 'update_post'], 'required'],
-            [['username', 'password', 'password_old', 'password_new_dublicate', 'password_new', 'auth_key', 'u_snp', 'u_company', 'u_activation_link'], 'string'],
+            [['username', 'password', 'auth_key', 'u_snp', 'u_company', 'u_status', 'u_activation_link', 'u_time_link', 'date_post', 'update_post'], 'required'],
+            [['username', 'password','auth_key', 'u_snp', 'u_company', 'u_activation_link'], 'string'],
             [['u_status', 'u_time_link', 'date_post', 'update_post', 'activate_post'], 'integer'],
             [['password_new_dublicate'], 'compare', 'compareAttribute' => 'password_new','message'=>'Пароли не совпадают.'] ,
-            //[['password_old'], 'compare', 'compareAttribute' => 'password','message'=>'Пароли не совпадают.'] ,
-            ['password_old', 'compare', 'compareValue'=>$this->bla()], //, 'on'=>'changePassword'
-            ['password_new', 'string', 'length' => [6]],
-            ['password_new', 'match', 'pattern' => '/(.)\\1{2}/', 'message'=>'Пароль содержит больше 3-х одинаковых символов.', 'not' => 'password_new']
+            ['password_old', 'compare', 'compareValue'=>$this->bla(), 'on'=>self::SCENARIO_PASSWORD],
+            ['password_new', 'string', 'length' => [6], 'on'=>self::SCENARIO_PASSWORD],
+            ['password_new', 'match', 'pattern' => '/(.)\\1{2}/', 'message'=>'Пароль содержит больше 3-х одинаковых символов.', 'not' => 'password_new', 'on'=>self::SCENARIO_PASSWORD],
+            [['password_old', 'password_new_dublicate', 'password_new'], 'required', 'on'=>self::SCENARIO_PASSWORD]
         ];
     }
 
+    
+
     public function bla()
     {
-        $password = '2404';
-        return $password;
+        //$password = '2404';
+        $password = User::find()
+            ->where(['id' => Yii::$app->user->identity['id']])
+            ->one();
+        return $password->password;
     }
 
     /**
@@ -75,9 +82,9 @@ class User extends \yii\db\ActiveRecord
             'date_post' => 'Дата создания',
             'update_post' => 'Дата обновления',
             'activate_post' => 'Дата активации',
-            'password_old' => '0',
-            'password_new' => '1',
-            'password_new_dublicate' => '2',
+            'password_old' => 'Старый пароль',
+            'password_new' => 'Новый пароль',
+            'password_new_dublicate' => 'Повторите новый пароль',
         ];
     }
 }

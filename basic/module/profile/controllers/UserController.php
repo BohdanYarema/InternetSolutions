@@ -68,11 +68,12 @@ class UserController extends Controller
     {
         $id = Yii::$app->user->identity['id'];
         $model = $this->findModel($id);
+        $model->scenario = User::SCENARIO_PASSWORD;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            /*$model->password = $model->password_new;
-            $model->save();*/
-            //return $this->redirect(['view']);
+            $model->password = $model->password_new;
+            $model->save();
+            return $this->redirect(['view']);
         } else {
             return $this->render('password', [
                 'model' => $model,
