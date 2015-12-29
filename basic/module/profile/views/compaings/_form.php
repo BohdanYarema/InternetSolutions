@@ -44,10 +44,10 @@ use kartik\datetime\DateTimePicker;
 		echo '<label class="control-label">Event Time</label>';
 		echo DateTimePicker::widget([
 			'name' => 'date_end',
-			'value' => date('Y:m:d H:i:s'),
+			'value' => date('Y-m-d H:i:s'),
 			'pluginOptions' => [
 				'autoclose' => true,
-				'format' => 'yyyy:mm:dd: hh:ii:ss'
+				'format' => 'yyyy-mm-dd hh:ii:ss'
 			]
 		]);
 	?>

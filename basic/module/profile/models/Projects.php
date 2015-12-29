@@ -32,7 +32,16 @@ class Projects extends \yii\db\ActiveRecord
             [['id', 'date_post', 'date_update', 'id_user'], 'integer'],
             [['name'], 'required'],
             ['name', 'string', 'length' => [3]],
+            ['name', 'unique','filter' => ['id' => $this->unique_projects()]],
         ];
+    }
+
+    public function unique_projects()
+    {
+      $name = Yii::$app->request->post();
+      $password = Projects::find()->where(['name' => $name['Projects']['name'],'id_user' => Yii::$app->user->identity['id']])->one();
+
+      return $password->id;
     }
 
     /**
@@ -52,5 +61,10 @@ class Projects extends \yii\db\ActiveRecord
     public static function all_users_projects($user_id)
     {
         return static::find()->where(['id_user' => $user_id])->all();
+    }
+
+    public static function all_users_projects_id($user_id,$id)
+    {
+        return static::find()->where(['id_user' => $user_id,'id' => $id])->all();
     }
 }

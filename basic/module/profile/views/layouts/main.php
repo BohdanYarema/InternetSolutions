@@ -71,7 +71,8 @@ ModuleAsset_profile::register($this);
               </li>
               <li class="divider"></li>
               <li>
-                <a href="./account-login.html">
+                <? $url = Url::toRoute(['/site/logout']);?>
+                <a href="<?=$url;?>" data-method="post">
                   <i class="fa fa-sign-out"></i> 
                   &nbsp;&nbsp;Logout
                 </a>

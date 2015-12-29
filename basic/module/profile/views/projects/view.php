@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <p>
-        <?= Html::a('Добавить рекламную компанию', ['/profile/compaings/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить рекламную компанию', ['/profile/compaings/create_own', 'id'=> $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

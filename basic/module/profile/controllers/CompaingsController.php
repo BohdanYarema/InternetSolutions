@@ -70,23 +70,41 @@ class CompaingsController extends Controller
         $spheres = Spheres::all_spheres(); // список сфер деятельности
 
         $model = new Compaings();
+        $model->id_user = Yii::$app->user->identity->id;
+        $model->date_post = time();
 
-        $time = strtotime(Yii::$app->request->post('date_end'));
-
-        if ($model->load(Yii::$app->request->post())) {
-
-            $unique_link = Compaings::transliterate($model->name);
-            $model->unique_link = $unique_link;
-            $model->date_post = time();
-            $model->date_update = time();
-            $model->id_user = Yii::$app->user->identity->id;
-            $model->date_end = $time;
-
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+                'projects' => $projects,
+                'spheres' => $spheres,
+            ]);
+        }
+    }
+
+
+
+    /**
+     * Creates a new Compaings model wuth declarated projects name.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate_own($id)
+    {
+
+        $projects = Projects::all_users_projects_id(Yii::$app->user->identity->id,$id); // проекты пользователя
+        $spheres = Spheres::all_spheres(); // список сфер деятельности
+
+        $model = new Compaings();
+        $model->id_user = Yii::$app->user->identity->id;
+        $model->date_post = time();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create_own', [
                 'model' => $model,
                 'projects' => $projects,
                 'spheres' => $spheres,

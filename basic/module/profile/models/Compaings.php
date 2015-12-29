@@ -48,12 +48,25 @@ class Compaings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'about', 'link', 'unique_link'], 'string'],
+            [['about', 'link', 'unique_link'], 'string'],
             [['date_post', 'date_update', 'id_project', 'id_user', 'id_sphere'], 'integer'],
-            [['id_project', 'name', 'id_user', 'id_sphere'], 'required'],
+            [['id_project','id_user', 'id_sphere'], 'required'],
             [['date_end'], 'default', 'value' => null],
+            ['name', 'string', 'length' => [3]],
+            ['name', 'unique', 'filter' => ['id_project' => $this->unique_projects()]],
         ];
     }
+
+
+    public function unique_projects()
+    {
+      $name = Yii::$app->request->post();
+      $id_project = Yii::$app->request->post();
+      $password = Compaings::find()->where(['name' => $name['Compaings']['name'],'id_project' => $id_project['Compaings']['id_project'],'id_user' => Yii::$app->user->identity['id']])->one();
+
+      return $password->id_project;
+    }
+
 
     /**
      * @inheritdoc
@@ -105,5 +118,27 @@ class Compaings extends \yii\db\ActiveRecord
         return $link;
     }
 
+
+  public function beforeSave($insert)
+  {
+      if (parent::beforeSave($insert)) {
+
+          $time = strtotime(Yii::$app->request->post('date_end'));
+          $this->date_end = $time;
+          $this->date_update = time();
+
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  public function afterSave($insert, $changedAttributes){
+    
+    $this->unique_link = 'http://insol.in.ua/campaings/'.$this->id;
+    $this->updateAttributes(['unique_link']);
+
+    parent::afterSave($insert, $changedAttributes);
+  }
 
 }
