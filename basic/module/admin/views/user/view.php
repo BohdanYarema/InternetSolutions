@@ -37,8 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'u_status',
             'u_activation_link:ntext',
             'u_time_link:datetime',
-            'date_post',
-            'update_post',
+            [
+                'attribute' => 'date_post',
+                'format' =>  ['date', 'Y:m:d H:i:s'],
+            ],
+            [
+                'attribute' => 'update_post',
+                'format' =>  ['date', 'Y:m:d H:i:s'],
+            ],
         ],
     ]) ?>
 

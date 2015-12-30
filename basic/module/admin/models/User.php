@@ -61,4 +61,12 @@ class User extends \yii\db\ActiveRecord
             'activate_post' => 'Активирован',
         ];
     }
+
+    public function afterSave($insert, $changedAttributes){
+        
+        $this->update_post = time();
+        $this->updateAttributes(['update_post']);
+
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

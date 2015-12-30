@@ -51,4 +51,20 @@ class Projects extends \yii\db\ActiveRecord
             'id_user' => 'Автор',
         ];
     }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        
+        Compaings::deleteAll('id_project = :id_project', [':id_project' => $this->id]);
+
+    }
+
+    public function afterSave($insert, $changedAttributes){
+        
+        $this->date_update = time();
+        $this->updateAttributes(['date_update']);
+
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

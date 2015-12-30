@@ -37,9 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             'about:ntext',
             'link:ntext',
-            'date_post',
-            'date_end',
-            'date_update',
+            [
+                'attribute' => 'date_end',
+                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'filter' => false,
+            ],
             [
                 'attribute' => 'author',
                 'label' => 'Автор',

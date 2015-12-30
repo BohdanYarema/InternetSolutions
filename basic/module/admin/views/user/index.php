@@ -72,16 +72,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     'label' => 'Статус',
                 ],
-                [
+                /*[
                     'attribute' => 'date_post',
                     'format' =>  ['date', 'Y:m:s H:i:s'],
                     'filter' => false,
-                ],
-                [
+                ],*/
+                /*[
                     'attribute' => 'activate_post',
                     'format' =>  ['date', 'Y:m:s H:i:s'],
                     'filter' => false,
-                ],
+                ],*/
                 ['class' => 'yii\grid\ActionColumn', 'template' => '<div class="col-sm-5">{view}</div><div class="col-sm-5">{update}</div><div class="col-sm-5">{delete}</div>',
                     'buttons'=>[
                         'view'=>function ($url, $model) {

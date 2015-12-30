@@ -45,4 +45,12 @@ class Spheres extends \yii\db\ActiveRecord
             'date_update' => 'Дата обновления',
         ];
     }
+
+    public function afterSave($insert, $changedAttributes){
+        
+        $this->date_update = time();
+        $this->updateAttributes(['date_update']);
+
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

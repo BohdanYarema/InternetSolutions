@@ -36,20 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name:ntext',
             [
-                'attribute' => 'date_post',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-                'filter' => false,
-            ],
-            [
-                'attribute' => 'date_update',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-                'filter' => false,
-            ],
-            [
                 'attribute' => 'author',
                 'value' => 'author.username'
             ],
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}',
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update} {delete}',
                 'buttons'=>[
                     'view'=>function ($url, $model) {
                         $customurl=Yii::$app->getUrlManager()->createUrl(['admin/projects/view','id'=> $model->id]); //$model->id для AR
@@ -61,6 +51,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         return \yii\helpers\Html::a( '<button type="button" class="btn btn-icon btn-info command-edit"><span class="zmdi zmdi-edit"></span></button>', $customurl,
                         ['title' => "Обновить"]);
                     },
+                    'delete'=>function ($url, $model) {
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['admin/projects/delete','id'=> $model->id]); //$model->id для AR
+                        return \yii\helpers\Html::a( '<button type="button" class="btn btn-icon btn-info command-edit"><span class="zmdi zmdi-delete"></span></button>', $customurl,
+                        ['data'=>[
+                               'method' => 'post',
+                               'confirm' => 'Вы уверены что хотите удалить эту запись ?',
+                            ]
+                        ]
+                        );
+                    }
                 ],
             ],
         ],

@@ -23,8 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name:ntext',
-            'date_post',
-            'date_update',
+            [
+                'attribute' => 'date_post',
+                'format' =>  ['date', 'Y:m:d H:i:s'],
+            ],
+            [
+                'attribute' => 'date_update',
+                'format' =>  ['date', 'Y:m:d H:i:s'],
+            ],
         ],
     ]) ?>
 

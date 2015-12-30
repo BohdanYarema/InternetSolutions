@@ -67,4 +67,10 @@ class Projects extends \yii\db\ActiveRecord
     {
         return static::find()->where(['id_user' => $user_id,'id' => $id])->all();
     }
+
+    public static function all_users_projects_one($user_id,$id)
+    {
+        $model = Projects::find()->where(['id_user' => $user_id,'id' => $id])->all();
+        return static::find()->where(['id_user' => $user_id,'id' => $id])->all();
+    }
 }

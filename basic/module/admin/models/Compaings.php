@@ -71,4 +71,12 @@ class Compaings extends \yii\db\ActiveRecord
             'id_sphere' => 'Название сферы деятельности',
         ];
     }
+
+    public function afterSave($insert, $changedAttributes){
+        
+        $this->date_update = time();
+        $this->updateAttributes(['date_update']);
+
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

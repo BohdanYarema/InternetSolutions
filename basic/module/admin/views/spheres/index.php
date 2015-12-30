@@ -42,12 +42,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             [
                 'attribute' => 'date_post',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
+                'format' =>  ['date', 'Y:m:d H:i:s'],
                 'filter' => false,
             ],
             [
                 'attribute' => 'date_update',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
+                'format' =>  ['date', 'Y:m:d H:i:s'],
                 'filter' => false,
             ],
 

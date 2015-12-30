@@ -121,7 +121,7 @@ class CompaingsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $projects = Projects::all_users_projects(Yii::$app->user->identity->id); // проекты пользователя
+        $projects = Projects::all_users_projects_one(Yii::$app->user->identity->id,$model->id_project); // проекты пользователя
         $spheres = Spheres::all_spheres(); // список сфер деятельности
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
