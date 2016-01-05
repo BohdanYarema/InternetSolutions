@@ -61,7 +61,7 @@ class CompaingsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    /*public function actionCreate()
+    public function actionCreate()
     {
         $model = new Compaings();
 
@@ -72,7 +72,7 @@ class CompaingsController extends Controller
                 'model' => $model,
             ]);
         }
-    }*/
+    }
 
     /**
      * Updates an existing Compaings model.

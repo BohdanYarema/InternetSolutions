@@ -27,10 +27,11 @@ class ModuleAsset_profile extends AssetBundle
         "themes_profile/css/mvpready-admin.css"
     ];
     public $js = [
+        "themes_profile/bower_components/jquery/dist/jquery.js",
         "themes_profile/bower_components/bootstrap/dist/js/bootstrap.min.js",
         "themes_profile/bower_components/slimscroll/jquery.slimscroll.min.js",
         "themes_profile/bower_components/flot/excanvas.min.js",
-        /*"themes_profile/bower_components/flot/jquery.flot.js",
+        "themes_profile/bower_components/flot/jquery.flot.js",
         "themes_profile/bower_components/flot/jquery.flot.pie.js",
         "themes_profile/bower_components/flot/jquery.flot.resize.js",
         "themes_profile/bower_components/flot/jquery.flot.time.js",
@@ -40,7 +41,7 @@ class ModuleAsset_profile extends AssetBundle
         "themes_profile/js/mvpready-admin.js",
         "themes_profile/global/js/demos/flot/line.js",
         "themes_profile/global/js/demos/flot/pie.js",
-        "themes_profile/global/js/demos/flot/auto.js"*/
+        "themes_profile/global/js/demos/flot/auto.js"
     ];
     public $depends = [
         'yii\web\YiiAsset',

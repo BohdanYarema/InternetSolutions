@@ -52,8 +52,8 @@ class Registration extends ActiveRecord
 
         // нужно добавить следующие три строки:
         $auth = Yii::$app->authManager;
-        $authorRole = $auth->getRole('author');
-        $auth->assign($authorRole, $user->getId());
+        $userRole = $auth->getRole('user');
+        $auth->assign($userRole, $user->getId());
 
         
         return  $check; // сохраняем нового пользователя, если все ок то тру, елсе фолс
