@@ -8,6 +8,7 @@ use app\module\admin\models\CompaingsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * CompaingsController implements the CRUD actions for Compaings model.
@@ -19,14 +20,26 @@ class CompaingsController extends Controller
 
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
+        $behaviors['access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                    'matchCallback' => function ($rule, $action){
+                        $module     = Yii::$app->controller->module->id;
+                        $action     = Yii::$app->controller->action->id;
+                        $controller = Yii::$app->controller->id;
+                        $route      = "$module/$controller/$action";
+                        $post = Yii::$app->request->post();
+                        if (Yii::$app->user->can($route)) {
+                            return true;
+                        }
+                    }
                 ],
             ],
         ];
+        return $behaviors;
     }
 
     /**
