@@ -19,7 +19,7 @@ class LogsSearch extends Logs
     {
         return [
             [['id', 'user_id', 'date_post'], 'integer'],
-            [['operation', 'sql', 'path_operation_text', 'path_operation_link', 'message', 'email', 'files', 'user_role'], 'safe'],
+            [['operation', 'sql'], 'safe'],
         ];
     }
 
@@ -62,13 +62,7 @@ class LogsSearch extends Logs
         ]);
 
         $query->andFilterWhere(['like', 'operation', $this->operation])
-            ->andFilterWhere(['like', 'sql', $this->sql])
-            ->andFilterWhere(['like', 'path_operation_text', $this->path_operation_text])
-            ->andFilterWhere(['like', 'path_operation_link', $this->path_operation_link])
-            ->andFilterWhere(['like', 'message', $this->message])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'files', $this->files])
-            ->andFilterWhere(['like', 'user_role', $this->user_role]);
+            ->andFilterWhere(['like', 'sql', $this->sql]);
 
         return $dataProvider;
     }

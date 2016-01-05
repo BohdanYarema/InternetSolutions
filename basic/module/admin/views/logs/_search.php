@@ -23,19 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sql') ?>
 
-    <?= $form->field($model, 'path_operation_text') ?>
-
-    <?php // echo $form->field($model, 'path_operation_link') ?>
-
-    <?php // echo $form->field($model, 'message') ?>
-
-    <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'files') ?>
-
-    <?php // echo $form->field($model, 'date_post') ?>
-
-    <?php // echo $form->field($model, 'user_role') ?>
+    <?= $form->field($model, 'date_post') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

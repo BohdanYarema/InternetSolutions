@@ -32,13 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             'operation',
             'sql:ntext',
-            'path_operation_text:ntext',
-            'path_operation_link:ntext',
-            'message:ntext',
-            'email:ntext',
-            'files:ntext',
             'date_post',
-            'user_role:ntext',
         ],
     ]) ?>
 

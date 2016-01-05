@@ -37,6 +37,26 @@ class DefaultController extends Controller
     
     public function actionIndex()
     {
+
+    	//$auth = Yii::$app->authManager;
+
+        //$auth = Yii::$app->authManager;
+
+        // добавляем разрешение "createPost"
+        /*$createPost = $auth->createPermission('profile/default/index');
+        $createPost->description = 'profile -> index';
+        $auth->add($createPost);*/
+
+    	// добавляем разрешение "index"
+        /*$index = $auth->createPermission('profile/default/index');
+       
+        $admin = $auth->createRole('author');
+        $auth->addChild($admin, $index);*/
+
+
+
+
+
         return $this->render('index');
     }
 }
