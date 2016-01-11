@@ -29,6 +29,16 @@ class Registration extends ActiveRecord
             ['username', 'unique'],
         ];
     }
+
+    /*Название атрибутов*/
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'имя',
+            'username' => 'email',
+            'company' => 'название компании',
+        ];
+    }
  
     /*registration user on site*/
 
@@ -52,7 +62,7 @@ class Registration extends ActiveRecord
 
         // нужно добавить следующие три строки:
         $auth = Yii::$app->authManager;
-        $authorRole = $auth->getRole('author');
+        $authorRole = $auth->getRole('user');
         $auth->assign($authorRole, $user->getId());
 
         

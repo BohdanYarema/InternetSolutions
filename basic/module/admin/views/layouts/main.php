@@ -85,14 +85,14 @@ ModuleAsset_admin::register($this);
             <li>
                 <a href="<?=$url;?>">
                     <i class="zmdi zmdi-folder-person zmdi-hc-fw"></i>
-                    <span>Проэкты</span>
+                    <span>Проекты</span>
                 </a>
             </li>
             <? $url = Url::toRoute(['compaings/index']);?>
             <li>
                 <a href="<?=$url;?>">
                     <i class="zmdi zmdi-folder-person zmdi-hc-fw"></i>
-                    <span>Компании</span>
+                    <span>Кампании</span>
                 </a>
             </li>
             <? $url = Url::toRoute(['spheres/index']);?>

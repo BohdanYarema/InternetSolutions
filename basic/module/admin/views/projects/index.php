@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\module\admin\models\ProjectsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Проэкты';
+$this->title = 'Проекты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="projects-index">
@@ -37,7 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             [
                 'attribute' => 'author',
-                'value' => 'author.username'
+                'value' => 'author.username',
+                'label' => 'Автор'
             ],
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update} {delete}',
                 'buttons'=>[

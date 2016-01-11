@@ -74,15 +74,15 @@ class Compaings extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код компании',
+            'id' => 'Код кaмпании',
             'name' => 'Название',
-            'about' => 'Про компанию',
+            'about' => 'Про кaмпанию',
             'link' => 'Ссылка',
             'unique_link' => 'Уникальная ссылка',
             'date_post' => 'Дата создания',
             'date_end' => 'Дата окончания',
             'date_update' => 'Дата обновления',
-            'id_project' => 'Название проэкта',
+            'id_project' => 'Название проекта',
             'id_user' => 'Автор',
             'id_sphere' => 'Название сферы деятельности',
             'id_spheres' => 'Название сферы деятельности',

@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
 	            <div class="heading-block">
 	              <h3>
-	                Изминение пароля
+	                Изменение пароля
 	              </h3>
 	            </div> <!-- /.heading-block -->
 		        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>

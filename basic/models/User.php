@@ -139,7 +139,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function send_email($email,$link)
     {
         $sendmail = Yii::$app->mailer->compose()
-            ->setFrom('info@insol.in.ua')
+            ->setFrom('insol@insol.in.ua')
             ->setTo($email)
             ->setSubject('Подтверждение регистрации')
             ->setHtmlBody('<b>Здравствуйте!

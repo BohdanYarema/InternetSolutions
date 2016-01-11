@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'columns' => [
                 'username:ntext',
-                [
+                /*[
                     'attribute' => 'password',
                     'format' => 'text',
                     'filter' => false,
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return $dotted;
                     },
                     'label' => 'Пароль',
-                ],
+                ],*/
                 /*'auth_key:ntext',*/
                 'u_snp:ntext',
                 'u_company:ntext',
@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'format' =>  ['date', 'Y:m:s H:i:s'],
                     'filter' => false,
                 ],*/
-                ['class' => 'yii\grid\ActionColumn', 'template' => '<div class="col-sm-5">{view}</div><div class="col-sm-5">{update}</div><div class="col-sm-5">{delete}</div>',
+                ['class' => 'yii\grid\ActionColumn', 'template' => '<div class="col-sm-3">{view}{update}{delete}</div>',
                     'buttons'=>[
                         'view'=>function ($url, $model) {
                             $customurl=Yii::$app->getUrlManager()->createUrl(['admin/user/view','id'=> $model->id]); //$model->id для AR

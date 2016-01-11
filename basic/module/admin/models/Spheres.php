@@ -29,7 +29,8 @@ class Spheres extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'date_post', 'date_update'], 'integer'],
-            [['name'], 'string']
+            [['name'], 'string'],
+            [['name'], 'unique']
         ];
     }
 

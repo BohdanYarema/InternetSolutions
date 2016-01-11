@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -26,15 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'link:ntext',
              [
                 'attribute' => 'date_post',
-                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'format' =>  ['datetime'],
             ],
             [
                 'attribute' => 'date_end',
-                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'format' =>  ['datetime'],
             ],
             [
                 'attribute' => 'date_update',
-                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'format' =>  ['datetime'],
             ],
             [
                 'attribute' => 'id_project',
@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id_spheres',
                 'format' => 'text',
                 'value' => $model->spheres->name,
+                'label' => 'Сфера деятельности',
             ],
             [
                 'attribute' => 'id_user',

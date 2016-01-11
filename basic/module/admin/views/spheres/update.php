@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\module\admin\models\Spheres */
 
-$this->title = 'Обновить сферу деятельности: ' . ' ' . $model->name;
+$this->title = 'Редактировать сферу деятельности: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Spheres', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Обновить';

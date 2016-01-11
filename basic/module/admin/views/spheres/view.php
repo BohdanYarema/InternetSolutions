@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -25,11 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             [
                 'attribute' => 'date_post',
-                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'format' =>  ['datetime'],
             ],
             [
                 'attribute' => 'date_update',
-                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'format' =>  ['datetime'],
             ],
         ],
     ]) ?>

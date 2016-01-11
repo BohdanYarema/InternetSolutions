@@ -112,7 +112,7 @@ ModuleAsset_profile::register($this);
                             <? $url = Url::toRoute(['compaings/index']);?>
                             <a href="<?=$url;?>">
                             <i class="fa fa-dashboard dropdown-icon "></i> 
-                            Компании
+                            Кампании
                             </a>
                         </li>
                     </ul>

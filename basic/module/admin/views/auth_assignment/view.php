@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\module\admin\models\AuthItem */
+/* @var $model app\module\admin\models\Auth_assignment */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Auth Items', 'url' => ['index']];
+$this->title = $model->item_name;
+$this->params['breadcrumbs'][] = ['label' => 'Auth Assignments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="auth-item-view">
+<div class="auth-assignment-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->name], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->name], [
+        <?= Html::a('Update', ['update', 'item_name' => $model->item_name, 'user_id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'item_name' => $model->item_name, 'user_id' => $model->user_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,13 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'name',
-            'type',
-            'description:ntext',
-            'rule_name',
-            'data:ntext',
+            'item_name',
+            'user_id',
             'created_at',
-            'updated_at',
         ],
     ]) ?>
 

@@ -50,7 +50,7 @@ class Projects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код проэкта',
+            'id' => 'Код проекта',
             'name' => 'Название',
             'date_post' => 'Дата создания',
             'date_update' => 'Дата обновления',

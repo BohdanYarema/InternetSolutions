@@ -5,12 +5,12 @@ namespace app\module\admin\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\module\admin\models\AuthItem;
+use app\module\admin\models\Auth_assignment;
 
 /**
- * AuthItemSearch represents the model behind the search form about `app\module\admin\models\AuthItem`.
+ * Auth_assignmentSearch represents the model behind the search form about `app\module\admin\models\Auth_assignment`.
  */
-class AuthItemSearch extends AuthItem
+class Auth_assignmentSearch extends Auth_assignment
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class AuthItemSearch extends AuthItem
     public function rules()
     {
         return [
-            [['name', 'description', 'rule_name', 'data'], 'safe'],
-            [['type', 'created_at', 'updated_at'], 'integer'],
+            [['item_name', 'user_id'], 'safe'],
+            [['created_at'], 'integer'],
         ];
     }
 
@@ -41,7 +41,7 @@ class AuthItemSearch extends AuthItem
      */
     public function search($params)
     {
-        $query = AuthItem::find();
+        $query = Auth_assignment::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,15 +56,11 @@ class AuthItemSearch extends AuthItem
         }
 
         $query->andFilterWhere([
-            'type' => $this->type,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'rule_name', $this->rule_name])
-            ->andFilterWhere(['like', 'data', $this->data]);
+        $query->andFilterWhere(['like', 'item_name', $this->item_name])
+            ->andFilterWhere(['like', 'user_id', $this->user_id]);
 
         return $dataProvider;
     }

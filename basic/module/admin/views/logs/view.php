@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\module\admin\models\Logs */
 
-$this->title = $model->id;
+$this->title = 'Лог №'.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Logs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -14,25 +14,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'user_name',
             'id',
             'user_id',
-            'operation',
+            'operation:ntext',
             'sql:ntext',
-            'date_post',
+            'path_operation_text:ntext',
+            'path_operation_link:ntext',
+            'message:ntext',
+            'email:ntext',
+            'files:ntext',
+            'date_post:datetime',
+            'user_role:ntext',
         ],
     ]) ?>
 

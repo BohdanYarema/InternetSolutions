@@ -16,50 +16,36 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'name:ntext',
-            [
-                'attribute' => 'date_post',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-            ],
-            [
-                'attribute' => 'date_update',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-            ],
+            'date_post:datetime',
+            'date_update:datetime',
         ],
     ]) ?>
 
     <p>
-        <?= Html::a('Добавить рекламную компанию', ['/profile/compaings/create_own', 'id'=> $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить рекламную кампанию', ['/profile/compaings/create_own', 'id'=> $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
             //'id',
             'name:ntext',
             'about:ntext',
             'link:ntext',
-            'unique_link:ntext',
-            [
-                'attribute' => 'date_end',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-            ],
-            [
-                'attribute' => 'date_post',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-            ],
-            [
-                'attribute' => 'date_update',
-                'format' =>  ['date', 'Y:m:s H:i:s'],
-            ],
+             //'unique_link:ntext',
+            'date_end:datetime',
+            'date_post:datetime',
+            'date_update:datetime',
             [
                 'attribute' => 'spheres',
                 'value' => 'spheres.name',

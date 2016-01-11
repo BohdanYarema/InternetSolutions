@@ -1,24 +1,9 @@
 <?php
 
-namespace app\module\admin\models;
+namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "Logs".
- *
- * @property integer $id
- * @property integer $user_id
- * @property string $operation
- * @property string $sql
- * @property string $path_operation_text
- * @property string $path_operation_link
- * @property string $message
- * @property string $email
- * @property string $files
- * @property integer $date_post
- * @property string $user_role
- */
 class Logs extends \yii\db\ActiveRecord
 {
     /**
@@ -59,5 +44,35 @@ class Logs extends \yii\db\ActiveRecord
             'user_role' => 'Права',
             'user_name' => 'Имя',
         ];
+    }
+
+    /*registration user on site*/
+
+    public static function loger($user)
+    {
+
+        $data = User::findByUsername($user['username']);
+        $role = Yii::$app->authManager->getRolesByUser($data->id);
+
+        $time = time();
+        $loger = new Logs();
+        
+        $loger->user_id = $data->id;
+        $loger->operation = $user['operation'];
+        $loger->sql = '';
+        $loger->path_operation_text = $user['text'];
+        $loger->path_operation_link = $user['url'];
+        $loger->message = $user['message'];
+        $loger->email = $data->username;
+        $loger->files = '';
+        if (!empty($role['user']->name)) {
+            $loger->user_role = $role['user']->name;
+        } else {
+            $loger->user_role = $role['admin']->name;
+        }
+        $loger->date_post = $time;
+        $loger->user_name = $data->u_snp;
+
+        $check = $loger->save();
     }
 }

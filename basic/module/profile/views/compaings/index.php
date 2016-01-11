@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\module\profile\models\CompaingsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Компании';
+$this->title = 'Кампании';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="compaings-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Добавить компанию', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить кампанию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,10 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             'about:ntext',
             'link:ntext',
-            'unique_link:ntext',
-            'date_post',
-            'date_end',
-            'date_update',
+            //'unique_link:ntext',
+            'date_post:datetime',
+            'date_end:datetime',
+            'date_update:datetime',
             [
                 'attribute' => 'spheres',
                 'label' => 'Название сферы деятельности',
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'projects',
-                'label' => 'Название проэкта',
+                'label' => 'Название проекта',
                 'value' => 'projects.name'
             ],
             ['class' => 'yii\grid\ActionColumn'],

@@ -4,23 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\module\admin\models\Logs */
+/* @var $model app\module\admin\models\Auth_assignment */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="logs-form">
+<div class="auth-assignment-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
+    <?= $form->field($model, 'item_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'operation')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'sql')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'date_post')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

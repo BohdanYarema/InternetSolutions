@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\module\admin\models\AuthItemSearch */
+/* @var $searchModel app\module\admin\models\Auth_assignmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Auth Items';
+$this->title = 'Auth Assignments';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="auth-item-index">
+<div class="auth-assignment-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Auth Item', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Auth Assignment', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,15 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'name',
-            'type',
-            'description:ntext',
-            'rule_name',
-            'data:ntext',
-            // 'created_at',
-            // 'updated_at',
+            'item_name',
+            'user_id',
+            'created_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '<div class="col-sm-3">{update}</div><div class="col-sm-3">{delete}</div>'],
         ],
     ]); ?>
 

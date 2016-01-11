@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\module\admin\models\CompaingsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Компании';
+$this->title = 'Кампании';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="compaings-index">
@@ -35,11 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
             'name:ntext',
-            'about:ntext',
-            'link:ntext',
+            //'about:ntext',
+            //'link:ntext',
             [
                 'attribute' => 'date_end',
-                'format' =>  ['date', 'Y:m:d H:i:s'],
+                'format' =>  ['datetime'],
                 'filter' => false,
             ],
             [
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'projects',
-                'label' => 'Название проэкта',
+                'label' => 'Название проекта',
                 'value' => 'projects.name'
             ],
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}',

@@ -12,6 +12,7 @@ use app\models\ContactForm;
 use app\models\EntryForm;
 use app\models\Registration;
 use app\models\User;
+use app\models\Logs;
 
 
 class SiteController extends Controller
@@ -73,8 +74,18 @@ class SiteController extends Controller
             $link = Yii::$app->urlManager->createAbsoluteUrl(['site/activate','code'=> $email_link]);
 
             if ($user = $model->registrations($email_link,$password)) {
+
+
+                $data = Yii::$app->request->post('Registration');
+                $data['operation'] = 'registration';
+                $data['url'] = Url::to('');
+                $data['text'] = 'Сайт, страница регистрации';
+                $data['message'] = 'Зарегестрировался пользователь под именем -> '.$data['name'].', почтовый ящик -> '.$data['username'];
+                $logs = Logs::loger($data);
+
                 /*sending email*/
                 $send = User::send_email($model->username,$link);
+
                 return $this->redirect('index.php?r=site/confirmate');
             }
         } else {
@@ -100,6 +111,13 @@ class SiteController extends Controller
                 if ($add == 1) {
                     /*sending password*/
                     $send = User::send_password($password,$result['username']);
+
+                    $data['username'] = $result->username;
+                    $data['operation'] = 'activate';
+                    $data['url'] = Url::to('');
+                    $data['text'] = 'Сайт, страница активации';
+                    $data['message'] = 'Прошел активацию пользователь под именем -> '.$result->u_snp.', почтовый ящик -> '.$result->username;
+                    $logs = Logs::loger($data);
 
                     return $this->render('activate', [
                         'code' => $code,
@@ -152,6 +170,14 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            $data = Yii::$app->request->post('LoginForm');
+            $data['operation'] = 'login';
+            $data['url'] = Url::to('');
+            $data['text'] = 'Сайт, страница входа на сайт';
+            $data['message'] = 'Вошел на сайт пользователь, почтовый ящик -> '.$data['username'];
+            $logs = Logs::loger($data);
+
             return $this->goBack();
         }
         

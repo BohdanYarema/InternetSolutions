@@ -38,9 +38,55 @@ class DefaultController extends Controller
     public function actionIndex()
     {
 
-    	//$auth = Yii::$app->authManager;
+    	$auth = Yii::$app->authManager;
 
-        //$auth = Yii::$app->authManager;
+        /*$createPost = $auth->createPermission('admin/spheres/create');
+        $createPost->description = 'admin->spheres->create';
+        $auth->add($createPost);
+        $createPost = $auth->createPermission('admin/spheres/view');
+        $createPost->description = 'admin->spheres->view';
+        $auth->add($createPost);
+        $createPost = $auth->createPermission('admin/spheres/update');
+        $createPost->description = 'admin->spheres->update';
+        $auth->add($createPost);
+        $createPost = $auth->createPermission('admin/spheres/index');
+        $createPost->description = 'admin->spheres->index';
+        $auth->add($createPost);
+        $createPost = $auth->createPermission('admin/spheres/delete');
+        $createPost->description = 'admin->spheres->delete';
+        $auth->add($createPost);
+
+
+
+        $create = $auth->getPermission('admin/spheres/create');
+        $view = $auth->getPermission('admin/spheres/view');
+        $update = $auth->getPermission('admin/spheres/update');
+        $index = $auth->getPermission('admin/spheres/index');
+        $delete = $auth->getPermission('admin/spheres/delete');
+
+
+        $admin = $auth->getRole('admin');
+        $auth->addChild($admin, $create);
+        $auth->addChild($admin, $view);
+        $auth->addChild($admin, $update);
+        $auth->addChild($admin, $index);
+        $auth->addChild($admin, $delete);*/
+
+       /* $createPost = $auth->createPermission('admin/projects/index');
+        $createPost->description = 'profile -> index';
+        $auth->add($createPost);
+
+        $createPost = $auth->createPermission('admin/projects/index');
+        $createPost->description = 'profile -> index';
+        $auth->add($createPost);
+
+        $createPost = $auth->createPermission('admin/projects/index');
+        $createPost->description = 'profile -> index';
+        $auth->add($createPost);
+
+        $createPost = $auth->createPermission('admin/projects/index');
+        $createPost->description = 'profile -> index';
+        $auth->add($createPost);*/
 
         // добавляем разрешение "createPost"
         /*$createPost = $auth->createPermission('profile/default/index');
