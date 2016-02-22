@@ -5,7 +5,7 @@ namespace app\module\admin\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\module\admin\models\Auth_assignment;
+use app\module\admin\models\auth_assignment;
 
 /**
  * Auth_assignmentSearch represents the model behind the search form about `app\module\admin\models\Auth_assignment`.

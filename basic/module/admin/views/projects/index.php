@@ -35,12 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'name:ntext',
+            'date_post:datetime',
             [
                 'attribute' => 'author',
-                'value' => 'author.username',
-                'label' => 'Автор'
+                'value' => 'author.u_company',
+                'label' => 'КОМПАНИЯ'
             ],
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update} {delete}',
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}',
                 'buttons'=>[
                     'view'=>function ($url, $model) {
                         $customurl=Yii::$app->getUrlManager()->createUrl(['admin/projects/view','id'=> $model->id]); //$model->id для AR
@@ -52,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return \yii\helpers\Html::a( '<button type="button" class="btn btn-icon btn-info command-edit"><span class="zmdi zmdi-edit"></span></button>', $customurl,
                         ['title' => "Обновить"]);
                     },
-                    'delete'=>function ($url, $model) {
+                    /*'delete'=>function ($url, $model) {
                         $customurl=Yii::$app->getUrlManager()->createUrl(['admin/projects/delete','id'=> $model->id]); //$model->id для AR
                         return \yii\helpers\Html::a( '<button type="button" class="btn btn-icon btn-info command-edit"><span class="zmdi zmdi-delete"></span></button>', $customurl,
                         ['data'=>[
@@ -61,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]
                         ]
                         );
-                    }
+                    }*/
                 ],
             ],
         ],

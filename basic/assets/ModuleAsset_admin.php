@@ -29,8 +29,8 @@ class ModuleAsset_admin extends AssetBundle
         "themes_admin/vendors/bower_components/jquery.bootgrid/dist/jquery.bootgrid.override.min.css",
     ];
     public $js = [
+        //"themes_admin/vendors/bower_components/jquery/src/jquery.js",
         "themes_admin/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js",
-        
         "themes_admin/vendors/bower_components/flot/jquery.flot.js",
         "themes_admin/vendors/bower_components/flot/jquery.flot.resize.js",
         "themes_admin/vendors/bower_components/flot-orderBars/js/jquery.flot.orderBars.js",
@@ -53,6 +53,6 @@ class ModuleAsset_admin extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        //'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

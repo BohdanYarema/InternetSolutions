@@ -10,6 +10,13 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
+define('FLASH_CREATE',          Yii::$app->params['flashcreate']);
+define('FLASH_UPDATE',          Yii::$app->params['flashupdate']);
+define('FLASH_DELETE',          Yii::$app->params['flashdelete']);
+define('FLASH_SUCCESSCOMPILTE', Yii::$app->params['flashsuccesscomplite']);
+define('FLASH_ERRORCOMPILTE',   Yii::$app->params['flasherrorcomplite']);
+
+
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -74,7 +81,7 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    /*public function actionCreate()
     {
         $model = new User();
 
@@ -85,7 +92,7 @@ class UserController extends Controller
                 'model' => $model,
             ]);
         }
-    }
+    }*/
 
     /**
      * Updates an existing User model.
@@ -98,6 +105,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('flashupdate', constant('FLASH_UPDATE'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -116,6 +124,7 @@ class UserController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('flashdelete', constant('FLASH_DELETE'));
         return $this->redirect(['index']);
     }
 

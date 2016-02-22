@@ -19,7 +19,10 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-jui": "^2.0",
-        "kartik-v/yii2-widget-datetimepicker": "*"
+        "kartik-v/yii2-widget-datetimepicker": "*",
+        "google/apiclient": "*",
+        "kartik-v/yii2-field-range": "*",
+        "kartik-v/yii2-widget-datepicker": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

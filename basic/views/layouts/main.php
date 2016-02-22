@@ -1,15 +1,12 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -18,9 +15,19 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="shortcut icon" href="/basic/web/favicon.ico" type="image/x-icon">
+     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-72008977-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
     <?php $this->head() ?>
 </head>
 <body>
@@ -69,7 +76,7 @@ AppAsset::register($this);
 										if (!Yii::$app->user->isGuest) {
 											?>
 												<li> 
-													<? $url = Url::toRoute(['/profile']);?>
+													<? $url = Url::toRoute(['/profile/default']);?>
 													<a href="<?=$url;?>" target="_blank">ЛИЧНЫЙ КАБИНЕТ (<? echo Yii::$app->user->identity->username;?>)</a>
 													<? $url = Url::toRoute(['site/logout']);?>
 													<a href="<?=$url;?>" data-method="post">ВЫХОД</a>
@@ -91,7 +98,7 @@ AppAsset::register($this);
 							<div id="logo">
 								<? $url = Url::toRoute(['site/index']);?>
 								<a href="<?=$url;?>">
-									<img src="/basic/web/themes/images/Insol_logo.png" alt="">
+									<img src="/themes/images/Insol_logo.png" alt="">
 								</a>
 							</div><!-- logo -->
 						</div><!-- col -->
@@ -106,7 +113,7 @@ AppAsset::register($this);
 										<a href="<?=$url;?>">Главная</a>
 									</li>
 									<li>
-										<? $url = Url::toRoute(['site/index']);?>
+										<? $url = Url::toRoute(['site/charts']);?>
 										<a href="<?=$url;?>">Преимущества</a>
 									</li>
 									<li>

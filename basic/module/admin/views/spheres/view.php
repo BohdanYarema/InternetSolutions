@@ -3,12 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\module\admin\models\Spheres */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Spheres', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="spheres-view">
 

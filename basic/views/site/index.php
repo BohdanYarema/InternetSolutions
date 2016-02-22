@@ -5,7 +5,7 @@
                     <ul>
 						<li data-transition="slotslide-horizontal" data-slotamount="50">
                             
-                            <img src="/basic/web/themes/images/Slide1.jpg" alt="">	
+                            <img src="/themes/images/Slide1.jpg" alt="">	
 
                             <div style="color:#fe5e3e;" class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="700" data-easing="easeOutBack">
                             	Позвольте своему бизнесу <br>расти вместе с нами.  
@@ -22,7 +22,7 @@
 						</li>
                         <li data-transition="slotslide-horizontal" data-slotamount="50">
                             
-                            <img src="/basic/web/themes/images/Slide2.jpg" alt="">
+                            <img src="/themes/images/Slide2.jpg" alt="">
 							
 							<div style="color:#282e3a;" class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="700" data-easing="easeOutBack">
                             	Любой товар нуждается<br>в рекламе.
@@ -39,7 +39,7 @@
 						</li>
 						<li data-transition="slotslide-horizontal" data-slotamount="50">
                             
-                            <img src="/basic/web/themes/images/Slide3.jpg" alt="">
+                            <img src="/themes/images/Slide3.jpg" alt="">
 
                             <div class="tp-caption title-small sfl" data-x="30" data-y="210" data-speed="700" data-start="700" data-easing="easeOutBack">
                             	Делать деньги без <br>рекламы может только монетный двор.
@@ -160,11 +160,11 @@
 				<div class="full-section-shadow-bottom"></div>
 				<div class="parallax-multilayer">
                 	
-                    <div class="parallax-layer" data-stellar-ratio="0.3" data-x="5%" data-y="40%"><img src="/basic/web/themes/images/index/multilayer-parallax/image-1.png" alt=""></div>	
+                    <div class="parallax-layer" data-stellar-ratio="0.3" data-x="5%" data-y="40%"><img src="/themes/images/index/multilayer-parallax/image-1.png" alt=""></div>	
 					
-					<div class="parallax-layer" data-stellar-ratio="0.5" data-x="90%" data-y="10%"><img src="/basic/web/themes/images/index/multilayer-parallax/image-2.png" alt=""></div>
+					<div class="parallax-layer" data-stellar-ratio="0.5" data-x="90%" data-y="10%"><img src="/themes/images/index/multilayer-parallax/image-2.png" alt=""></div>
 					
-					<div class="parallax-layer" data-stellar-ratio="1.7" data-x="75" data-y="50%"><img src="/basic/web/themes/images/index/multilayer-parallax/image-3.png" alt=""></div>
+					<div class="parallax-layer" data-stellar-ratio="1.7" data-x="75" data-y="50%"><img src="/themes/images/index/multilayer-parallax/image-3.png" alt=""></div>
 					
 				</div> --><!-- parallax-multilayer -->
 				<div class="full-section-container">

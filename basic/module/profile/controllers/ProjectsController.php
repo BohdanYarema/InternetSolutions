@@ -4,14 +4,23 @@ namespace app\module\profile\controllers;
 
 use Yii;
 use app\module\profile\models\Projects;
-use app\module\profile\models\Compaings;
-use app\module\profile\models\CompaingsSearch;
+use app\module\profile\models\Campaigns;
+use app\module\profile\models\CampaignsSearch;
 use app\module\profile\models\ProjectsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+
+
+
+define('FLASH_CREATE', Yii::$app->params['flashcreate']);
+define('FLASH_UPDATE', Yii::$app->params['flashupdate']);
+define('FLASH_DELETE', Yii::$app->params['flashdelete']);
+define('FLASH_SUCCESSCOMPILTE', Yii::$app->params['flashsuccesscomplite']);
+define('FLASH_ERRORCOMPILTE', Yii::$app->params['flasherrorcomplite']);
+
 
 /**
  * ProjectsController implements the CRUD actions for Projects model.
@@ -68,7 +77,7 @@ class ProjectsController extends Controller
     public function actionView($id)
     {
 
-        $searchModel = new CompaingsSearch();
+        $searchModel = new CampaignsSearch();
         $dataProvider = $searchModel->search_view(Yii::$app->request->queryParams);
 
 
@@ -92,6 +101,7 @@ class ProjectsController extends Controller
         $model->id_user = Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('flashcreate', constant('FLASH_CREATE'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -112,6 +122,7 @@ class ProjectsController extends Controller
         $model->date_update = time();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('flashupdate', constant('FLASH_UPDATE'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -126,12 +137,12 @@ class ProjectsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    /*public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('flashcreate', constant('FLASH_CREATE'));
         return $this->redirect(['index']);
-    }
+    }*/
     
     /**
      * Finds the Projects model based on its primary key value.

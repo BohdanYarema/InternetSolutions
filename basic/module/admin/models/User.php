@@ -69,4 +69,16 @@ class User extends \yii\db\ActiveRecord
 
         parent::afterSave($insert, $changedAttributes);
     }
+
+    /*поисе по имени*/
+    public static function findByUser_id($id)
+    {
+        return static::findOne(['id' => $id]);
+    }
+
+    /*поисе по имени*/
+    public static function findByUser_all()
+    {
+        return static::find()->all();
+    }
 }

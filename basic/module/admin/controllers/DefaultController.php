@@ -38,11 +38,27 @@ class DefaultController extends Controller
     public function actionIndex()
     {
 
-    	$auth = Yii::$app->authManager;
+    	/*$auth = Yii::$app->authManager;
+        
+        $createPost = $auth->createPermission('profile/compaings/daterange');
+        $createPost->description = 'profile->compaings->daterange';
+        $auth->add($createPost);
+        
+        $create = $auth->getPermission('profile/compaings/daterange');
+        
+        $admin = $auth->getRole('admin');
+        $auth->addChild($admin, $create);
+        
+        $admin = $auth->getRole('user');
+        $auth->addChild($admin, $create);*/
+        
 
-        /*$createPost = $auth->createPermission('admin/spheres/create');
+        /*
+        
+        $createPost = $auth->createPermission('admin/spheres/create');
         $createPost->description = 'admin->spheres->create';
         $auth->add($createPost);
+        
         $createPost = $auth->createPermission('admin/spheres/view');
         $createPost->description = 'admin->spheres->view';
         $auth->add($createPost);

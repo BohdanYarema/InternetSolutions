@@ -48,6 +48,7 @@ class ProjectsSearch extends Projects
         $query = Projects::find();
 
         $query->joinWith(['author']);
+        $query->orderBy("date_post DESC"); 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

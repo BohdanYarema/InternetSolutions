@@ -44,11 +44,11 @@ class Projects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код проэкта',
+            'id' => 'Код проекта',
             'name' => 'Название',
             'date_post' => 'Дата создания',
             'date_update' => 'Дата обновления',
-            'id_user' => 'Автор',
+            'id_user' => 'Компания',
         ];
     }
 
@@ -56,7 +56,7 @@ class Projects extends \yii\db\ActiveRecord
     {
         parent::afterDelete();
         
-        Compaings::deleteAll('id_project = :id_project', [':id_project' => $this->id]);
+        Campaigns::deleteAll('id_project = :id_project', [':id_project' => $this->id]);
 
     }
 

@@ -13,6 +13,11 @@ use app\models\EntryForm;
 use app\models\Registration;
 use app\models\User;
 use app\models\Logs;
+use app\models\GoogleAnalyticsAPI;
+use app\module\admin\models\Campaigns;
+use app\module\admin\models\Analytics;
+use app\module\admin\models\Detail;
+
 
 
 class SiteController extends Controller
@@ -56,6 +61,24 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionCharts()
+    {
+        return $this->render('charts');
+    }
+
+    public function actionCampaigns($id)
+    {
+        $url = Campaigns::Get_site($id);
+        $url = $url->link;
+        $url = str_replace('http://', '', $url);
+        $url = str_replace('https://', '', $url);
+        $url = str_replace('www.', '', $url);
+        
+        return $this->render('campaigns', [
+            'id' => $id, 'url' => $url
+        ]);
     }
 
     public function actionRegistration()
@@ -184,5 +207,119 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+
+    public function actionCron()
+    {
+
+        $client_id = '746431818850-sddh6at9g6o18hbmi82rh13tu2mi3pbg.apps.googleusercontent.com';
+        $client_secret = 'mz1lOoqB9oslvGZVhoT6KS-V';
+        $redirect_uri = 'http://insol.madeforpets.com.ua/cron';
+        $account_id = 'ga:114815562';
+
+        session_start();
+
+        $_SESSION['oauth_access_token'] = 'ya29.jAK-QzSp8fb_ou3CxnTp2SY_WEZ5aQF5JjxNmu9kpan_C0roaG6I1nFVGlOQJXL94MAU';
+
+        $ga = new GoogleAnalyticsAPI(); 
+        $ga->auth->setClientId($client_id);
+        $ga->auth->setClientSecret($client_secret);
+        $ga->auth->setRedirectUri($redirect_uri);
+
+        if (isset($_GET['force_oauth'])) {
+            $_SESSION['oauth_access_token'] = null;
+        }
+
+        if (!isset($_SESSION['oauth_access_token']) && !isset($_GET['code'])) {
+            // Go get the url of the authentication page, redirect the client and go get that token!
+            $url = $ga->auth->buildAuthUrl();
+            header("Location: ".$url);
+        }
+
+        if (!isset($_SESSION['oauth_access_token']) && isset($_GET['code'])) {
+            $auth = $ga->auth->getAccessToken($_GET['code']);
+            if ($auth['http_code'] == 200) {
+                $accessToken    = $auth['access_token'];
+                $refreshToken   = $auth['refresh_token'];
+                $tokenExpires   = $auth['expires_in'];
+                $tokenCreated   = time();
+                
+                // For simplicity of the example we only store the accessToken
+                // If it expires use the refreshToken to get a fresh one
+                $_SESSION['oauth_access_token'] = $accessToken;
+            } else {
+                die("Sorry, something wend wrong retrieving the oAuth tokens");
+            }
+        }
+
+        if (!empty($_SESSION['oauth_access_token'])) {
+            $ga->setAccessToken($_SESSION['oauth_access_token']);
+            $ga->setAccountId($account_id);
+
+            // Set the default params. For example the start/end dates and max-results
+            $defaults = array(
+                'start-date' => '2016-01-01',
+                'end-date' => 'today',
+            );
+            $ga->setDefaultQueryParams($defaults);
+
+            $params = array(
+                'metrics' => 'ga:pageviews,ga:sessionDuration',
+                'dimensions' => 'ga:pagePath,ga:date,ga:fullReferrer',
+                'sort' => '-ga:date',
+            );
+            $visits = $ga->query($params);
+        }
+
+        $data = $visits['rows'];
+
+        if (isset($data)) { // проверка на пустоту массива
+            $mass = $data;
+            for ($i=0; $i < count($mass); $i++) { 
+                $result = $this->find_($mass[$i][0]);
+                if (!($result === false)) {
+                    $id = $this->find_id($mass[$i][0]);
+                    if ($id != '') {
+                        $models = Campaigns::Get_info($id);
+                        $mass[$i][] = (int)$id;
+                        $mass[$i][] = $models->id_user;
+                    }
+                    $new[] = $mass[$i];
+                }
+            }
+        }
+
+        for($i=0; $i < count($new); $i++){
+            $models = Analytics::Get_info($new[$i][1],$new[$i][5]);
+            if($models == ''){
+                $create_ = Analytics::Create_($new[$i]);
+                if($create_ != false){
+                    $create_detail_ = Detail::Create_($new[$i],$create_);
+                }
+            } else {
+                $check_detail = Detail::Get_info($models->id,$new[$i][2]);
+                if($check_detail == ''){
+                    $create_detail_ = Detail::Create_($new[$i],$models->id);
+                } else {
+                    $update_detail_ = Detail::Update_($new[$i],$models->id);
+                }
+            }
+        }
+
+        return $this->render('cron',[
+            'data' => $data
+        ]);
+    }
+
+    protected function find_($rows){ // проверка на нужную ссылку
+        $value = '/campaigns?id=';
+        $result = strpos($rows,$value);
+        return $result;
+    }
+    
+    protected function find_id($rows){ // получение id
+        $value = '/campaigns?id=';
+        $id = str_replace($value, '', $rows);
+        return $id;
     }
 }

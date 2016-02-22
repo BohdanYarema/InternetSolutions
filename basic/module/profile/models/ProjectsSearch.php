@@ -48,6 +48,8 @@ class ProjectsSearch extends Projects
         $query = Projects::find();
 
         $query->where(['id_user' => Yii::$app->user->identity->id]); 
+        $query->orderBy("date_post DESC"); 
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -9,7 +9,7 @@ class AdminModule extends \yii\base\Module
     public function init()
     {
         parent::init();
-        
+        //$this->params['bla'] = 'блаблабла';
         // custom initialization code goes here
     }
 }

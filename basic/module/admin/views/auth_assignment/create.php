@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\module\admin\models\Auth_assignment */
 
-$this->title = 'Create Auth Assignment';
+$this->title = 'Создать права доступа';
 $this->params['breadcrumbs'][] = ['label' => 'Auth Assignments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'users' => $users,
     ]) ?>
 
 </div>

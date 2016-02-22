@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=park_b2b',
+    'dsn' => 'mysql:host=localhost;dbname=madeforp_insol',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

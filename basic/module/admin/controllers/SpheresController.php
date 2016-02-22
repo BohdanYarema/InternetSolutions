@@ -10,6 +10,13 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
+
+define('FLASH_CREATE',          Yii::$app->params['flashcreate']);
+define('FLASH_UPDATE',          Yii::$app->params['flashupdate']);
+define('FLASH_DELETE',          Yii::$app->params['flashdelete']);
+define('FLASH_SUCCESSCOMPILTE', Yii::$app->params['flashsuccesscomplite']);
+define('FLASH_ERRORCOMPILTE',   Yii::$app->params['flasherrorcomplite']);
+
 /**
  * SpheresController implements the CRUD actions for Spheres model.
  */
@@ -81,6 +88,7 @@ class SpheresController extends Controller
         $model->date_update = time();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('flashcreate', constant('FLASH_CREATE'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -100,6 +108,7 @@ class SpheresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('flashupdate', constant('FLASH_UPDATE'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -117,7 +126,7 @@ class SpheresController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('flashdelete', constant('FLASH_DELETE'));
         return $this->redirect(['index']);
     }
 

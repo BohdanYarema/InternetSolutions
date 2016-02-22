@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <p>
-        <?= Html::a('Добавить рекламную кампанию', ['/profile/compaings/create_own', 'id'=> $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить рекламную кампанию', ['/profile/campaigns/create_own', 'id'=> $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'about:ntext',
             'link:ntext',
              //'unique_link:ntext',
+            'date_begin:datetime',
             'date_end:datetime',
             'date_post:datetime',
             'date_update:datetime',
@@ -54,17 +55,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update} {delete}',
                 'buttons'=>[
                     'view'=>function ($url, $model) {
-                        $customurl=Yii::$app->getUrlManager()->createUrl(['profile/compaings/view','id'=> $model->id]); //$model->id для AR
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['profile/campaigns/view','id'=> $model->id]); //$model->id для AR
                         return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-eye-open"></span>', $customurl,
                         ['title' => "Просмотреть"]);
                     },
                     'update'=>function ($url, $model) {
-                        $customurl=Yii::$app->getUrlManager()->createUrl(['profile/compaings/update','id'=> $model->id]); //$model->id для AR
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['profile/campaigns/update','id'=> $model->id]); //$model->id для AR
                         return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', $customurl,
                         ['title' => "Обновить"]);
                     },
                     'delete'=>function ($url, $model) {
-                        $customurl=Yii::$app->getUrlManager()->createUrl(['profile/compaings/delete','id'=> $model->id],['data-method' => 'post']); //$model->id для AR
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['profile/campaigns/delete','id'=> $model->id],['data-method' => 'post']); //$model->id для AR
                         return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-trash"></span>', $customurl,
                         ['data'=>[
                                'method' => 'post',

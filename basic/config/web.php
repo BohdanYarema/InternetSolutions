@@ -8,9 +8,22 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
     'components' => [
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // Disable index.php
+            'showScriptName' => false,
+            // Disable r= routes
+            'enablePrettyUrl' => true,
+            'rules' => array(
+                    '<alias:index>' => 'site/<alias>',    
+                    '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                    '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'like',
+            'cookieValidationKey' => '1nd93H281efs',
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id_user',
                 'format' => 'text',
-                'value' => $model->author->username,
+                'value' => $model->author->u_company,
             ],
         ],
     ]) ?>
@@ -66,6 +66,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'about:ntext',
             //'link:ntext',
             [
+                'attribute' => 'date_begin',
+                'format' =>  ['datetime'],
+            ],
+            [
                 'attribute' => 'date_end',
                 'format' =>  ['datetime'],
             ],
@@ -84,18 +88,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'author',
-                'value' => 'author.username',
-                'label' => 'Автор',
+                'value' => 'author.u_company',
+                'label' => 'КОМПАНИЯ',
             ],
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}',
                 'buttons'=>[
                     'view'=>function ($url, $model) {
-                        $customurl=Yii::$app->getUrlManager()->createUrl(['admin/compaings/view','id'=> $model->id]); //$model->id для AR
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['admin/campaigns/view','id'=> $model->id]); //$model->id для AR
                         return \yii\helpers\Html::a( '<button type="button" class="btn btn-icon btn-info command-edit"><span class="glyphicon glyphicon-eye-open"></span></button>', $customurl,
                         ['title' => "Просмотреть"]);
                     },
                     'update'=>function ($url, $model) {
-                        $customurl=Yii::$app->getUrlManager()->createUrl(['admin/compaings/update','id'=> $model->id]); //$model->id для AR
+                        $customurl=Yii::$app->getUrlManager()->createUrl(['admin/campaigns/update','id'=> $model->id]); //$model->id для AR
                         return \yii\helpers\Html::a( '<button type="button" class="btn btn-icon btn-info command-edit"><span class="zmdi zmdi-edit"></span></button>', $customurl,
                         ['title' => "Обновить"]);
                     },

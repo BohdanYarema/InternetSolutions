@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\ModuleAsset_admin;
+use app\components\FlashWidget;
 
 ModuleAsset_admin::register($this);
 ?>
@@ -19,7 +20,7 @@ ModuleAsset_admin::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/basic/web/favicon.ico" type="image/x-icon">
-    <?= Html::csrfMetaTags() ?>
+    <?= Html::csrfMetaTags() ?><?php $this->beginPage() ?><?php $this->beginPage() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -39,7 +40,7 @@ ModuleAsset_admin::register($this);
             
             <!-- Logo -->
             <li class="logo">
-                <a href=""><img src="/basic/web/themes_admin/img/logo.png" alt=""></a>
+                <a href=""><img src="/themes_admin/img/logo.png" alt=""></a>
                 <div id="menu-trigger"><i class="zmdi zmdi-menu"></i></div>
             </li>
 
@@ -59,7 +60,7 @@ ModuleAsset_admin::register($this);
         <ul class="side-menu">
             <li class="sm-sub sms-profile">
                 <a class="clearfix" href="">
-                    <img src="/basic/web/themes/images/admiral.jpg" alt="">
+                    <img src="/themes/images/admiral.jpg" alt="">
     
                     <span class="f-11">
                         <span class="d-block"><?echo Yii::$app->user->identity['u_snp'];?></span>
@@ -67,7 +68,7 @@ ModuleAsset_admin::register($this);
                     </span>
                 </a>
             </li>
-            <? $url = Url::toRoute(['/admin']);?>
+            <? $url = Url::toRoute(['/admin/default']);?>
             <li>
                 <a href="<?=$url;?>">
                     <i class="zmdi zmdi-home"></i>
@@ -88,7 +89,7 @@ ModuleAsset_admin::register($this);
                     <span>Проекты</span>
                 </a>
             </li>
-            <? $url = Url::toRoute(['compaings/index']);?>
+            <? $url = Url::toRoute(['campaigns/index']);?>
             <li>
                 <a href="<?=$url;?>">
                     <i class="zmdi zmdi-folder-person zmdi-hc-fw"></i>
@@ -102,11 +103,25 @@ ModuleAsset_admin::register($this);
                     <span>Сферы деятельности</span>
                 </a>
             </li>
+            <? $url = Url::toRoute(['auth_assignment/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-account-box zmdi-hc-fw"></i>
+                    <span>Установка прав доступа</span>
+                </a>
+            </li>
             <? $url = Url::toRoute(['logs/index']);?>
             <li>
                 <a href="<?=$url;?>">
                     <i class="zmdi zmdi-desktop-mac zmdi-hc-fw"></i>
                     <span>Логи</span>
+                </a>
+            </li>
+            <? $url = Url::toRoute(['analytics/index']);?>
+            <li>
+                <a href="<?=$url;?>">
+                    <i class="zmdi zmdi-trending-up"></i>
+                    <span>Аналитика</span>
                 </a>
             </li>
         </ul>
@@ -115,6 +130,12 @@ ModuleAsset_admin::register($this);
     <section id="content">
         <div class="container">
             <?= $content ?>
+            <?
+              $data = Yii::$app->session->getAllFlashes();    
+              if ($data) {
+                  echo FlashWidget::widget(['data' => $data]);
+              }
+            ?>
         </div>        
     </section>
 

@@ -48,7 +48,7 @@ $(document).ready(function(){
     /* --------------------------------------------------------
         Welcome Message
     -----------------------------------------------------------*/
-    notify('top', 'right', '', 'inverse', 'animated fadeIn', 'animated fadeOut', 'Welcome back ', 'Mallinda Hollaway!');
+    //notify('top', 'right', '', 'inverse', 'animated fadeIn', 'animated fadeOut', 'Welcome back ', 'Mallinda Hollaway!');
     
     /* --------------------------------------------------------
         Animations
